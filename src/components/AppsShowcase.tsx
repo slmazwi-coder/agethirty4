@@ -1,44 +1,34 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Clock, Rocket, ShoppingCart, HardHat, FolderKanban, Wrench } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Store, Shield, BarChart3 } from "lucide-react";
 
-const launchedApps = [
+const apps = [
   {
-    name: "BuildTrack Pro",
-    desc: "Construction project management with real-time progress tracking, resource allocation, and compliance reporting.",
-    icon: HardHat,
-    status: "live",
-    tag: "Construction",
+    name: "Moreki",
+    tagline: "The Visual Mall Experience",
+    desc: "Browse stores, explore products, and shop across multiple vendors in one immersive digital space.",
+    icon: Store,
+    category: "E-Commerce",
+    accentColor: "text-amber-400",
+    gradient: "from-orange-500/10 to-amber-500/10",
   },
   {
-    name: "ShopForge",
-    desc: "E-commerce storefront builder with AI-driven product recommendations and inventory management.",
-    icon: ShoppingCart,
-    status: "live",
-    tag: "E-Commerce",
+    name: "Brandified",
+    tagline: "Supplier Verification Made Simple",
+    desc: "Verify suppliers, check compliance documents, and build trust with verified badges before committing to deals.",
+    icon: Shield,
+    category: "E-Commerce",
+    accentColor: "text-sky-400",
+    gradient: "from-sky-500/10 to-blue-500/10",
   },
   {
-    name: "PlanSync",
-    desc: "Engineering project collaboration platform with blueprint versioning and approval workflows.",
-    icon: FolderKanban,
-    status: "live",
-    tag: "Project Management",
-  },
-];
-
-const upcomingApps = [
-  {
-    name: "FieldOps",
-    desc: "Mobile-first field operations tool for construction crews — scheduling, inspections, and incident reports.",
-    icon: Wrench,
-    tag: "Construction",
-    eta: "Q2 2026",
-  },
-  {
-    name: "TradeFlow",
-    desc: "B2B marketplace connecting suppliers and contractors with automated procurement workflows.",
-    icon: Rocket,
-    tag: "E-Commerce",
-    eta: "Q3 2026",
+    name: "ProjectFlow AI",
+    tagline: "Construction PM, Reinvented",
+    desc: "Interactive Gantt charts, resource tracking, and AI-assisted scheduling for construction and engineering teams.",
+    icon: BarChart3,
+    category: "Engineering & Construction",
+    accentColor: "text-emerald-400",
+    gradient: "from-emerald-500/10 to-teal-500/10",
   },
 ];
 
@@ -63,51 +53,40 @@ const AppsShowcase = () => (
       >
         <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">Our Products</span>
         <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Apps that move industries</h2>
-        <p className="text-muted-foreground max-w-xl text-lg">Launched and in development — each built to solve real problems at scale.</p>
+        <p className="text-muted-foreground max-w-xl text-lg">
+          Purpose-built tools for e-commerce and construction — solving real problems at scale.
+        </p>
       </motion.div>
 
-      {/* Launched */}
-      <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-3 gap-6 mb-16">
-        {launchedApps.map((app) => (
-          <motion.div key={app.name} variants={item} className="group relative rounded-lg p-6 glass hover:glow-border transition-all duration-300">
+      <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-3 gap-6 mb-12">
+        {apps.map((app) => (
+          <motion.div
+            key={app.name}
+            variants={item}
+            className={`group relative rounded-lg p-6 glass hover:glow-border transition-all duration-300 bg-gradient-to-br ${app.gradient}`}
+          >
             <div className="flex items-center justify-between mb-4">
               <div className="p-2 rounded-md bg-primary/10">
-                <app.icon size={22} className="text-primary" />
+                <app.icon size={22} className={app.accentColor} />
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse-glow" />
-                <span className="text-xs text-green-400 font-medium">Live</span>
-              </div>
+              <span className="text-[10px] uppercase tracking-widest text-muted-foreground">{app.category}</span>
             </div>
-            <span className="text-[10px] uppercase tracking-widest text-muted-foreground">{app.tag}</span>
-            <h3 className="text-xl font-display font-semibold mt-1 mb-2 group-hover:text-primary transition-colors">{app.name}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{app.desc}</p>
-            <button className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline">
-              Learn more <ExternalLink size={14} />
-            </button>
+            <h3 className="text-xl font-display font-semibold mb-1 group-hover:text-primary transition-colors">{app.name}</h3>
+            <p className={`text-sm font-medium ${app.accentColor} mb-2`}>{app.tagline}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">{app.desc}</p>
+            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400">In Development</span>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Upcoming */}
-      <h3 className="text-2xl font-display font-semibold mb-6 flex items-center gap-3">
-        <Clock size={20} className="text-primary" /> Coming Soon
-      </h3>
-      <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 gap-6">
-        {upcomingApps.map((app) => (
-          <motion.div key={app.name} variants={item} className="rounded-lg p-6 border border-dashed border-border bg-secondary/30 hover:border-primary/30 transition-all duration-300">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 rounded-md bg-primary/10">
-                <app.icon size={20} className="text-primary" />
-              </div>
-              <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary font-medium">{app.eta}</span>
-            </div>
-            <span className="text-[10px] uppercase tracking-widest text-muted-foreground">{app.tag}</span>
-            <h4 className="text-lg font-display font-semibold mt-1 mb-2">{app.name}</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">{app.desc}</p>
-          </motion.div>
-        ))}
-      </motion.div>
+      <div className="text-center">
+        <Link
+          to="/showroom"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+        >
+          Explore the full showroom <ArrowRight size={18} />
+        </Link>
+      </div>
     </div>
   </section>
 );
