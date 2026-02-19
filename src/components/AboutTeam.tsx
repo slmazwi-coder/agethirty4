@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Linkedin, Twitter } from "lucide-react";
 
 const team = [
-  { name: "Jordan Mabena", role: "Founder & CEO", bio: "Serial entrepreneur with 15+ years in construction tech and digital platforms." },
-  { name: "Naledi Khumalo", role: "CTO", bio: "Full-stack architect passionate about building scalable systems for real-world industries." },
-  { name: "David Mokoena", role: "Head of Product", bio: "Product strategist bridging the gap between field operations and modern software." },
-  { name: "Thandi Nkosi", role: "VP of Marketing", bio: "Brand builder focused on authentic storytelling and community-driven growth." },
+  { name: "Someleze Lucky Mazwi", role: "Founder & Director", bio: "Civil engineer turned tech entrepreneur with 13+ years in South African infrastructure. Built bridges, bulk water systems, and urban rehab projects before bringing engineering rigor to AGE THIRTY4's digital platforms." },
+  { name: "Naledi Khumalo", role: "CTO", bio: "Full-stack architect passionate about building scalable systems for real-world industries at AGE THIRTY4." },
+  { name: "David Mokoena", role: "Head of Product", bio: "Product strategist bridging the gap between field operations and modern software at AGE THIRTY4." },
+  { name: "Thandi Nkosi", role: "VP of Marketing", bio: "Brand builder focused on authentic storytelling and community-driven growth at AGE THIRTY4." },
 ];
 
 const AboutTeam = () => (
