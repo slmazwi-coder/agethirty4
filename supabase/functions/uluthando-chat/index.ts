@@ -16,7 +16,7 @@ Your role is to help visitors with:
 AGE THIRTY4's products (all currently in development):
 
 **E-Commerce:**
-- **Moreki** — A visual mall experience. Browse stores, explore products, and shop across multiple vendors in one immersive digital space. Great for shoppers who want curated experiences and small retailers wanting affordable online presence.
+- **Moreki** — South Africa's first integrated virtual mall app. It brings the entire nearest mall into one app with voice-powered shopping lists, smart price comparisons, unified checkout across multiple stores, and delivery or mall-hub collection. It solves fragmented shopping — no more juggling multiple apps, loyalty cards, and queues. Busy families save time, people can send groceries to loved ones in other provinces, small retailers get digital visibility, and mall operators drive foot traffic. Key features: location-aware mall browsing with live stock, voice commands to build lists, preferred-store-first comparisons with alternatives, single checkout that settles with each vendor, integrated loyalty card rewards, and recurring monthly orders. Prototype is complete; pilot launching in Gauteng malls.
 - **Brandified** — Supplier verification made simple. Upload documents, check compliance (tax clearance, B-BBEE, CIDB), and build trust with verified badges. Perfect for procurement teams, contractors, and government departments.
 
 **Engineering & Construction:**

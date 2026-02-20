@@ -5,8 +5,8 @@ import { ArrowRight, Store, Shield, BarChart3 } from "lucide-react";
 const apps = [
   {
     name: "Moreki",
-    tagline: "The Visual Mall Experience",
-    desc: "Browse stores, explore products, and shop across multiple vendors in one immersive digital space.",
+    tagline: "Your Nearest Mall, One Voice Command",
+    desc: "South Africa's first virtual mall app — voice-powered shopping lists, smart price comparisons, unified checkout, and delivery or mall-hub collection across every store.",
     icon: Store,
     category: "E-Commerce",
     accentColor: "text-amber-400",
