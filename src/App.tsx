@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AppShowroom from "./pages/AppShowroom";
 import NotFound from "./pages/NotFound";
+import UluthandoAgent from "./components/UluthandoAgent";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <UluthandoAgent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
