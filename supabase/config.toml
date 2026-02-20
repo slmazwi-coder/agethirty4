@@ -1,0 +1,4 @@
+project_id = "rjxbjszdkdaffuflwlyv"
+
+[functions.uluthando-chat]
+verify_jwt = false
