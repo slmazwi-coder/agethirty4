@@ -56,7 +56,6 @@ const apps = [
     ],
     gradient: "from-orange-500/20 to-amber-500/20",
     accentColor: "text-amber-400",
-    videoPlaceholder: true,
   },
   {
     id: "brandified",
@@ -253,27 +252,25 @@ const AppShowroom = () => (
                     </div>
 
                     {/* Video demo */}
-                    {app.videoPlaceholder && (
-                      <div className="mt-10">
-                        <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
-                          See Moreki in Action
-                        </h4>
-                        <div className="relative rounded-xl overflow-hidden border border-border bg-card/80 aspect-video flex items-center justify-center">
-                          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-500/10" />
-                          <div className="relative z-10 flex flex-col items-center gap-4 text-center px-6">
-                            <div className="p-4 rounded-full bg-primary/10 border border-primary/20">
-                              <Play size={32} className="text-primary ml-1" />
-                            </div>
-                            <h5 className="text-lg font-display font-semibold">
-                              App Demo Coming Soon
-                            </h5>
-                            <p className="text-sm text-muted-foreground max-w-md">
-                              Watch a full walkthrough — from registering and browsing your nearest mall, to building a voice-powered shopping list and checking out in one tap.
-                            </p>
+                    <div className="mt-10">
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                        See {app.name} in Action
+                      </h4>
+                      <div className="relative rounded-xl overflow-hidden border border-border bg-card/80 aspect-video flex items-center justify-center">
+                        <div className={`absolute inset-0 bg-gradient-to-br ${app.gradient}`} />
+                        <div className="relative z-10 flex flex-col items-center gap-4 text-center px-6">
+                          <div className="p-4 rounded-full bg-primary/10 border border-primary/20">
+                            <Play size={32} className="text-primary ml-1" />
                           </div>
+                          <h5 className="text-lg font-display font-semibold">
+                            App Demo Coming Soon
+                          </h5>
+                          <p className="text-sm text-muted-foreground max-w-md">
+                            Watch a full walkthrough of {app.name} — see how it works from start to finish.
+                          </p>
                         </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
