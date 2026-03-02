@@ -1,11 +1,31 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Sparkles, Terminal } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 type Msg = { role: "system" | "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/uluthando-chat`;
+
+const SYSTEM_PROMPT: Msg = {
+  role: "system",
+  content: `You are Uluthando, the high-intelligence sales executive for AGE THIRTY4. 
+  
+  CORE MISSION:
+  - Do NOT tell users to "visit the website." They are currently ON the website. 
+  - If they ask about MOREKI, invite them to try the LIVE WEB APP SIMULATION.
+  - Explain that the app is currently a simulation to demonstrate technology to retailers and gather user enthusiasm/data.
+  - APP LINK: [Updating Tuesday 8PM].
+
+  APP PORTFOLIO:
+  1. MOREKI: Live simulation for user testing.
+  2. RECOMMENDS: Mall logistics/robotics (Funding phase).
+  3. BRANDIFIED: Building prototype/groundwork.
+  4. PROJECT FLOW AI: Streamlining industrial workflows.
+  5. THIRTY4 STUDIO: Concept incubator.
+
+  IDENTITY: You are solution-driven and named after the founder's firstborn son. Be proactive in asking for Name/Email to capture leads.`
+};
 
 const UluthandoAgent = () => {
   const [open, setOpen] = useState(false);
@@ -33,7 +53,7 @@ const UluthandoAgent = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: [...messages, userMsg] }),
+        body: JSON.stringify({ messages: [SYSTEM_PROMPT, ...messages, userMsg] }),
       });
 
       if (!resp.body) return;
@@ -41,7 +61,7 @@ const UluthandoAgent = () => {
       const reader = resp.body.getReader();
       const decoder = new TextDecoder();
       let soFar = "";
-      let residual = ""; // Corrects the "yourIRTY4" glitch
+      let residual = ""; // FIXES THE STUTTERING/BROKEN WORDS
 
       while (true) {
         const { done, value } = await reader.read();
@@ -81,47 +101,57 @@ const UluthandoAgent = () => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)} className="fixed bottom-6 right-6 p-4 bg-primary rounded-full text-white shadow-xl z-50">
+      <button onClick={() => setOpen(true)} className="fixed bottom-6 right-6 p-4 bg-primary rounded-full text-white shadow-xl z-50 hover:scale-110 transition-transform">
         <MessageCircle size={24} />
       </button>
 
       <AnimatePresence>
         {open && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] h-[550px] flex flex-col rounded-3xl glass shadow-2xl overflow-hidden border border-white/10">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
+            className="fixed bottom-6 right-6 z-50 w-[400px] max-w-[90vw] h-[600px] flex flex-col rounded-3xl glass shadow-2xl overflow-hidden border border-white/10">
             
-            {/* Header with Visual Vulavula Badge */}
-            <div className="p-4 bg-card/90 border-b border-white/5 flex justify-between items-center">
+            {/* Header */}
+            <div className="p-5 bg-card/90 border-b border-white/5 flex justify-between items-center">
               <div>
-                <h3 className="font-bold">Uluthando</h3>
-                <p className="text-[10px] text-primary font-bold uppercase tracking-widest">Age Thirty4 Executive</p>
+                <h3 className="font-bold text-lg">Uluthando</h3>
+                <div className="flex items-center gap-2">
+                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                   <p className="text-[10px] text-primary font-bold uppercase tracking-widest">Age Thirty4 AI Executive</p>
+                </div>
               </div>
               <div className="flex items-center gap-1.5 bg-primary/10 px-2 py-1 rounded-full border border-primary/20">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="text-[8px] font-bold text-primary tracking-tighter uppercase">Vulavula Inside</span>
               </div>
-              <button onClick={() => setOpen(false)}><X size={18} /></button>
+              <button onClick={() => setOpen(false)} className="hover:bg-white/10 p-1 rounded"><X size={18} /></button>
             </div>
 
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4">
+            {/* Chat Body */}
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4 bg-background/50">
+              {messages.length === 0 && (
+                <div className="text-center py-10 opacity-50">
+                   <Terminal size={40} className="mx-auto mb-4" />
+                   <p className="text-sm">Sawubona. How shall we engineer your success?</p>
+                </div>
+              )}
               {messages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${m.role === "user" ? "bg-primary" : "bg-white/5 border border-white/10"}`}>
-                    <ReactMarkdown>{m.content}</ReactMarkdown>
+                  <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${m.role === "user" ? "bg-primary shadow-lg" : "bg-white/5 border border-white/10"}`}>
+                    <ReactMarkdown className="prose prose-invert prose-sm">{m.content}</ReactMarkdown>
                   </div>
                 </div>
               ))}
             </div>
 
-            <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="p-4 flex gap-2">
-              <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Message Uluthando..." className="flex-1 bg-white/5 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
-              <button type="submit" className="p-2 bg-primary rounded-xl"><Send size={18}/></button>
+            {/* Input Form */}
+            <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="p-4 bg-card/90 flex gap-2 border-t border-white/5">
+              <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Message Uluthando..." className="flex-1 bg-white/5 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary border border-white/10" />
+              <button type="submit" disabled={!input.trim() || loading} className="p-3 bg-primary rounded-xl text-white disabled:opacity-50"><Send size={18}/></button>
             </form>
 
-            {/* Powered by Vulavula Badge */}
-            <div className="pb-2 text-center">
-              <span className="text-[8px] uppercase tracking-widest opacity-30 flex items-center justify-center gap-1">
-                <Sparkles size={8} /> Powered by Vulavula
+            {/* Footer Badge */}
+            <div className="pb-3 text-center bg-card/90">
+              <span className="text-[9px] uppercase tracking-[0.2em] opacity-30 flex items-center justify-center gap-1">
+                <Sparkles size={10} /> Powered by Vulavula
               </span>
             </div>
           </motion.div>
