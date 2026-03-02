@@ -6,13 +6,15 @@ const team = [
     name: "Someleze Lucky Mazwi", 
     role: "Founder & Managing Director", 
     bio: "Civil engineer turned tech entrepreneur. Bringing engineering rigor and a solution-driven identity to AGE THIRTY4's digital architecture.",
-    image: "/assets/mazwi-corporate.jpg" 
+    // MATCHED TO YOUR ACTUAL FILENAME
+    image: "/someleze-corporate.jpg" 
   },
   { 
     name: "Sawo Mginqi", 
     role: "Partner & Head of Strategy", 
     bio: "Seasoned marketing strategist expert in digital growth and translating complex technical innovations into compelling market narratives.",
-    image: "/assets/sawo-corporate.jpg" 
+    // MATCHED TO YOUR ACTUAL FILENAME
+    image: "/sawo-corporate.jpg" 
   },
 ];
 
@@ -52,7 +54,7 @@ const AboutSection = () => {
         <div className="pt-20 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-              <h3 className="text-2xl font-display font-bold uppercase tracking-widest">Founding Ownership</h3>
+              <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-foreground">Founding Ownership</h3>
               <p className="text-sm text-muted-foreground mt-2">The leadership driving our solution-driven identity.</p>
             </div>
           </div>
@@ -67,14 +69,20 @@ const AboutSection = () => {
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-3xl glass border border-white/5 bg-gradient-to-br from-secondary/10 to-transparent flex flex-col"
               >
-                <div className="w-24 h-24 rounded-2xl overflow-hidden mb-6 border-2 border-primary/20">
+                {/* Image Holder */}
+                <div className="w-24 h-24 rounded-2xl overflow-hidden mb-6 border-2 border-primary/20 bg-black/20">
                   <img 
                     src={member.image} 
                     alt={member.name} 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    onError={(e) => {
+                      // Safety fallback if image is still missing or path is wrong
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${member.name}&background=111&color=fff`;
+                    }}
                   />
                 </div>
-                <h4 className="text-xl font-bold mb-1">{member.name}</h4>
+
+                <h4 className="text-xl font-bold mb-1 text-foreground">{member.name}</h4>
                 <p className="text-primary text-xs font-bold uppercase tracking-widest mb-4">{member.role}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                   {member.bio}
@@ -96,7 +104,7 @@ const AboutSection = () => {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
                 <Plus size={24} />
               </div>
-              <h3 className="font-display font-semibold text-lg mb-2">Future Talents</h3>
+              <h3 className="font-display font-semibold text-lg mb-2 text-foreground">Future Talents</h3>
               <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                 We are scaling our engineering and marketing teams to meet growing demand.
               </p>
