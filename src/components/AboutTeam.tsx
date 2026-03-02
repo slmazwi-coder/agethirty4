@@ -6,15 +6,15 @@ const team = [
     name: "Someleze Lucky Mazwi", 
     role: "Founder & Managing Director", 
     bio: "Civil engineer turned tech entrepreneur. Bringing engineering rigor and a solution-driven identity to AGE THIRTY4's digital architecture.",
-    // MATCHED TO YOUR ACTUAL FILENAME
-    image: "/someleze-corporate.jpg" 
+    // Corrected path based on your 'ls' command:
+    image: "/assets/someleze-corporate.jpg" 
   },
   { 
     name: "Sawo Mginqi", 
     role: "Partner & Head of Strategy", 
     bio: "Seasoned marketing strategist expert in digital growth and translating complex technical innovations into compelling market narratives.",
-    // MATCHED TO YOUR ACTUAL FILENAME
-    image: "/sawo-corporate.jpg" 
+    // Corrected path based on your 'ls' command:
+    image: "/assets/sawo-corporate.jpg" 
   },
 ];
 
@@ -76,8 +76,8 @@ const AboutSection = () => {
                     alt={member.name} 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                     onError={(e) => {
-                      // Safety fallback if image is still missing or path is wrong
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${member.name}&background=111&color=fff`;
+                      // Safety fallback for initials
+                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${member.name}&background=111&color=fff&size=200`;
                     }}
                   />
                 </div>
