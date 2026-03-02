@@ -1,94 +1,134 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight, Store, Shield, BarChart3 } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
 
 const apps = [
   {
-    name: "Moreki",
-    tagline: "Your Nearest Mall, One Voice Command",
-    desc: "South Africa's first virtual mall app — voice-powered shopping lists, smart price comparisons, unified checkout, and delivery or mall-hub collection across every store.",
-    icon: Store,
     category: "E-Commerce",
-    accentColor: "text-amber-400",
-    gradient: "from-orange-500/10 to-amber-500/10",
+    title: "Moreki",
+    subtitle: "Your Nearest Mall, One Voice Command",
+    description: "South Africa's first virtual mall app — voice-powered shopping lists, smart price comparisons, unified checkout, and delivery or mall-hub collection across every store.",
+    status: "Ready for Testing",
+    link: "https://moreki.app",
+    hasVideo: true,
+    tags: ["Voice-Commerce", "Logistics", "Retail"]
   },
   {
-    name: "Brandified",
-    tagline: "Supplier Verification Made Simple",
-    desc: "Verify suppliers, check compliance documents, and build trust with verified badges before committing to deals.",
-    icon: Shield,
     category: "E-Commerce",
-    accentColor: "text-sky-400",
-    gradient: "from-sky-500/10 to-blue-500/10",
+    title: "Brandified",
+    subtitle: "Supplier Verification Made Simple",
+    description: "Verify suppliers, check compliance documents, and build trust with verified badges before committing to deals.",
+    status: "In Development",
+    link: "#",
+    hasVideo: false,
+    tags: ["Compliance", "Trust", "B2B"]
   },
   {
-    name: "ProjectFlow AI",
-    tagline: "Construction PM, Reinvented",
-    desc: "Interactive Gantt charts, resource tracking, and AI-assisted scheduling for construction and engineering teams.",
-    icon: BarChart3,
     category: "Engineering & Construction",
-    accentColor: "text-emerald-400",
-    gradient: "from-emerald-500/10 to-teal-500/10",
+    title: "ProjectFlow AI",
+    subtitle: "Construction PM, Reinvented",
+    description: "Interactive Gantt charts, resource tracking, and AI-assisted scheduling for construction and engineering teams.",
+    status: "In Development",
+    link: "#",
+    hasVideo: false,
+    tags: ["Project Management", "AI", "Engineering"]
   },
+  {
+    category: "AI Utility Suite",
+    title: "Thirty4 Studio",
+    subtitle: "Professional AI Productivity Tools",
+    // EXACT WORDING: PDF Editing and Image Editing
+    description: "A specialized suite of AI-driven utilities for professional PDF editing, intelligent image editing, and essential digital toolsets designed to streamline modern workflows.",
+    status: "In Development",
+    link: "#",
+    hasVideo: false,
+    tags: ["AI Tools", "PDF Editing", "Image Editing"]
+  }
 ];
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const AppsShowcase = () => (
-  <section id="apps" className="section-padding">
-    <div className="max-w-7xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-16"
-      >
-        <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">Our Products</span>
-        <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Apps that move industries</h2>
-        <p className="text-muted-foreground max-w-xl text-lg">
-          Purpose-built tools for e-commerce and construction — solving real problems at scale.
-        </p>
-      </motion.div>
-
-      <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-3 gap-6 mb-12">
-        {apps.map((app) => (
-          <motion.div
-            key={app.name}
-            variants={item}
-            className={`group relative rounded-lg p-6 glass hover:glow-border transition-all duration-300 bg-gradient-to-br ${app.gradient}`}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-2 rounded-md bg-primary/10">
-                <app.icon size={22} className={app.accentColor} />
-              </div>
-              <span className="text-[10px] uppercase tracking-widest text-muted-foreground">{app.category}</span>
-            </div>
-            <h3 className="text-xl font-display font-semibold mb-1 group-hover:text-primary transition-colors">{app.name}</h3>
-            <p className={`text-sm font-medium ${app.accentColor} mb-2`}>{app.tagline}</p>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">{app.desc}</p>
-            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400">In Development</span>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      <div className="text-center">
-        <Link
-          to="/showroom"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+const ProjectsSection = () => {
+  return (
+    <section id="apps" className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }}
+          className="max-w-4xl mb-16"
         >
-          Explore the full showroom <ArrowRight size={18} />
-        </Link>
-      </div>
-    </div>
-  </section>
-);
+          <span className="text-primary font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Our Ecosystem</span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 text-foreground">
+            Explore the Full <span className="text-primary">Showroom.</span>
+          </h2>
+        </motion.div>
 
-export default AppsShowcase;
+        <div className="grid md:grid-cols-2 gap-8">
+          {apps.map((app, i) => (
+            <motion.div
+              key={app.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-8 rounded-3xl glass border border-white/5 bg-gradient-to-br from-secondary/10 to-transparent flex flex-col h-full"
+            >
+              <div className="flex justify-between items-start mb-6">
+                <span className="text-[10px] text-primary font-bold uppercase tracking-widest bg-primary/5 px-3 py-1 rounded-full border border-primary/10">
+                  {app.category}
+                </span>
+                <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${
+                  app.status === "Ready for Testing" ? "bg-green-500/10 text-green-500 border border-green-500/20" : "bg-white/5 text-muted-foreground border border-white/10"
+                }`}>
+                  {app.status}
+                </span>
+              </div>
+              
+              <div className="flex-grow">
+                <h4 className="text-3xl font-bold mb-1">{app.title}</h4>
+                <p className="text-primary text-sm font-medium mb-4">{app.subtitle}</p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  {app.description}
+                </p>
+
+                {/* VIDEO PLACEHOLDER - Positioned for Proof of Concept */}
+                {app.hasVideo && (
+                  <div className="w-full aspect-video bg-black/40 rounded-2xl mb-8 border border-white/5 flex flex-col items-center justify-center group cursor-pointer relative overflow-hidden">
+                    <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
+                    <Play className="text-primary mb-2 group-hover:scale-110 transition-transform" size={40} fill="currentColor" />
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-primary/80">Demo Video Coming Thursday</p>
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex flex-wrap gap-2">
+                  {app.tags.map(tag => (
+                    <span key={tag} className="text-[10px] bg-white/5 px-2 py-1 rounded-md text-muted-foreground border border-white/5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <a 
+                  href={app.link}
+                  target={app.status === "Ready for Testing" ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold transition-all ${
+                    app.status === "Ready for Testing" 
+                      ? "bg-primary text-primary-foreground hover:opacity-90 shadow-lg shadow-primary/20" 
+                      : "bg-white/5 text-muted-foreground cursor-not-allowed italic border border-white/10"
+                  }`}
+                >
+                  {app.status === "Ready for Testing" ? "Start Testing Moreki" : "Coming Soon"}
+                  {app.status === "Ready for Testing" && <ExternalLink size={16} />}
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;
