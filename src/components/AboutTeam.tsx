@@ -5,15 +5,13 @@ const team = [
   { 
     name: "Someleze Lucky Mazwi", 
     role: "Founder & Managing Director", 
-    bio: "Civil engineer turned tech entrepreneur. Bringing engineering rigor and a solution-driven identity to AGE THIRTY4's digital architecture.",
-    // Corrected path based on your 'ls' command:
+    bio: "Civil Engineering technician and project manager turned tech entrepreneur. Bringing engineering rigor and a solution-driven identity to AGE THIRTY4's digital architecture.",
     image: "/assets/someleze-corporate.jpg" 
   },
   { 
     name: "Sawo Mginqi", 
     role: "Partner & Head of Strategy", 
     bio: "Seasoned marketing strategist expert in digital growth and translating complex technical innovations into compelling market narratives.",
-    // Corrected path based on your 'ls' command:
     image: "/assets/sawo-corporate.jpg" 
   },
 ];
@@ -69,14 +67,12 @@ const AboutSection = () => {
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-3xl glass border border-white/5 bg-gradient-to-br from-secondary/10 to-transparent flex flex-col"
               >
-                {/* Image Holder */}
                 <div className="w-24 h-24 rounded-2xl overflow-hidden mb-6 border-2 border-primary/20 bg-black/20">
                   <img 
                     src={member.image} 
                     alt={member.name} 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                     onError={(e) => {
-                      // Safety fallback for initials
                       e.currentTarget.src = `https://ui-avatars.com/api/?name=${member.name}&background=111&color=fff&size=200`;
                     }}
                   />
@@ -94,7 +90,6 @@ const AboutSection = () => {
               </motion.div>
             ))}
 
-            {/* Expansion Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -115,7 +110,6 @@ const AboutSection = () => {
             </motion.div>
           </div>
         </div>
-
       </div>
     </section>
   );
