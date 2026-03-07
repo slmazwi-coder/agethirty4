@@ -38,18 +38,18 @@ const apps = [
     statusColor: "text-amber-400",
     statusBg: "bg-amber-400/10",
     description:
-      "Moreki is South Africa\'s first integrated virtual mall app. It brings your entire nearest mall into one app — browse real stores, compare prices, build voice-powered shopping lists, and check out once across multiple vendors. Whether you collect from a mall hub or get it delivered, Moreki turns fragmented, time-consuming shopping into a seamless experience for families, professionals, and retailers alike.",
+      "Moreki is South Africa's first integrated virtual mall app. It brings your entire nearest mall into one app — browse real stores, compare prices, build voice-powered shopping lists, and check out once across multiple vendors. Whether you collect from a mall hub or get it delivered, Moreki turns fragmented, time-consuming shopping into a seamless experience for families, professionals, and retailers alike.",
     icon: Store,
     features: [
       { icon: Eye, label: "Location-aware mall browsing", desc: "Register once, select your nearest mall, and see its full directory of stores with live stock data" },
-      { icon: Sparkles, label: "Voice-powered shopping lists", desc: "Simply say \'Milk, two loaves, dog food\' and Moreki builds your complete shopping list automatically" },
+      { icon: Sparkles, label: "Voice-powered shopping lists", desc: "Simply say 'Milk, two loaves, dog food' and Moreki builds your complete shopping list automatically" },
       { icon: Search, label: "Smart price comparisons", desc: "Your preferred store appears first, plus cheaper alternatives and substitutes when items are out of stock" },
       { icon: Package, label: "Unified checkout & hub collection", desc: "Pay once in-app — Moreki settles with each store individually. Collect from mall hubs or get doorstep delivery" },
       { icon: BadgeCheck, label: "Integrated rewards & loyalty", desc: "Upload your existing loyalty cards (Pick n Pay, Spar, etc.) and earn points seamlessly across all stores" },
       { icon: Clock, label: "Recurring orders", desc: "Set up monthly groceries for yourself or a loved one in another province — Moreki reminds and fulfils automatically" },
     ],
     useCases: [
-      "Busy families and professionals who don\'t have time to walk store-to-store hunting for deals",
+      "Busy families and professionals who don't have time to walk store-to-store hunting for deals",
       "People sending groceries to loved ones in another province — no more complicated coordination",
       "Small retailers who want digital visibility without building their own e-commerce site",
       "Mall operators looking to drive foot traffic and integrate digital shopping into their spaces",
@@ -285,11 +285,11 @@ const AppShowroom = () => (
                     </div>
                   </div>
                 </motion.div>
-              ))}\
+              ))}
           </motion.div>
         </div>
       </section>
-    ))}\
+    ))}
 
     {/* CTA */}
     <section className="section-padding">
@@ -298,7 +298,7 @@ const AppShowroom = () => (
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-        >\
+        >
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
             Interested in early access?
           </h2>
