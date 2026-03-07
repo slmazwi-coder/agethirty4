@@ -38,18 +38,18 @@ const apps = [
     statusColor: "text-amber-400",
     statusBg: "bg-amber-400/10",
     description:
-      "Moreki is South Africa's first integrated virtual mall app. It brings your entire nearest mall into one app — browse real stores, compare prices, build voice-powered shopping lists, and check out once across multiple vendors. Whether you collect from a mall hub or get it delivered, Moreki turns fragmented, time-consuming shopping into a seamless experience for families, professionals, and retailers alike.",
+      "Moreki is South Africa\'s first integrated virtual mall app. It brings your entire nearest mall into one app — browse real stores, compare prices, build voice-powered shopping lists, and check out once across multiple vendors. Whether you collect from a mall hub or get it delivered, Moreki turns fragmented, time-consuming shopping into a seamless experience for families, professionals, and retailers alike.",
     icon: Store,
     features: [
       { icon: Eye, label: "Location-aware mall browsing", desc: "Register once, select your nearest mall, and see its full directory of stores with live stock data" },
-      { icon: Sparkles, label: "Voice-powered shopping lists", desc: "Simply say 'Milk, two loaves, dog food' and Moreki builds your complete shopping list automatically" },
+      { icon: Sparkles, label: "Voice-powered shopping lists", desc: "Simply say \'Milk, two loaves, dog food\' and Moreki builds your complete shopping list automatically" },
       { icon: Search, label: "Smart price comparisons", desc: "Your preferred store appears first, plus cheaper alternatives and substitutes when items are out of stock" },
       { icon: Package, label: "Unified checkout & hub collection", desc: "Pay once in-app — Moreki settles with each store individually. Collect from mall hubs or get doorstep delivery" },
       { icon: BadgeCheck, label: "Integrated rewards & loyalty", desc: "Upload your existing loyalty cards (Pick n Pay, Spar, etc.) and earn points seamlessly across all stores" },
       { icon: Clock, label: "Recurring orders", desc: "Set up monthly groceries for yourself or a loved one in another province — Moreki reminds and fulfils automatically" },
     ],
     useCases: [
-      "Busy families and professionals who don't have time to walk store-to-store hunting for deals",
+      "Busy families and professionals who don\'t have time to walk store-to-store hunting for deals",
       "People sending groceries to loved ones in another province — no more complicated coordination",
       "Small retailers who want digital visibility without building their own e-commerce site",
       "Mall operators looking to drive foot traffic and integrate digital shopping into their spaces",
@@ -256,28 +256,40 @@ const AppShowroom = () => (
                       <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
                         See {app.name} in Action
                       </h4>
-                      <div className="relative rounded-xl overflow-hidden border border-border bg-card/80 aspect-video flex items-center justify-center">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${app.gradient}`} />
-                        <div className="relative z-10 flex flex-col items-center gap-4 text-center px-6">
-                          <div className="p-4 rounded-full bg-primary/10 border border-primary/20">
-                            <Play size={32} className="text-primary ml-1" />
+                      {app.id === 'moreki' ? (
+                        <a
+                          href="https://studio--studio-7917528504-89a87.us-central1.hosted.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+                        >
+                          <Play size={16} />
+                          Start Testing
+                        </a>
+                      ) : (
+                        <div className="relative rounded-xl overflow-hidden border border-border bg-card/80 aspect-video flex items-center justify-center">
+                          <div className={`absolute inset-0 bg-gradient-to-br ${app.gradient}`} />
+                          <div className="relative z-10 flex flex-col items-center gap-4 text-center px-6">
+                            <div className="p-4 rounded-full bg-primary/10 border border-primary/20">
+                              <Play size={32} className="text-primary ml-1" />
+                            </div>
+                            <h5 className="text-lg font-display font-semibold">
+                              App Demo Coming Soon
+                            </h5>
+                            <p className="text-sm text-muted-foreground max-w-md">
+                              Watch a full walkthrough of {app.name} — see how it works from start to finish.
+                            </p>
                           </div>
-                          <h5 className="text-lg font-display font-semibold">
-                            App Demo Coming Soon
-                          </h5>
-                          <p className="text-sm text-muted-foreground max-w-md">
-                            Watch a full walkthrough of {app.name} — see how it works from start to finish.
-                          </p>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
-              ))}
+              ))}\
           </motion.div>
         </div>
       </section>
-    ))}
+    ))}\
 
     {/* CTA */}
     <section className="section-padding">
@@ -286,7 +298,7 @@ const AppShowroom = () => (
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-        >
+        >\
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
             Interested in early access?
           </h2>
