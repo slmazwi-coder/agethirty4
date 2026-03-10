@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const apps = [
   {
@@ -8,8 +8,9 @@ const apps = [
     subtitle: "Your Nearest Mall, One Voice Command",
     description: "South Africa's first virtual mall app — voice-powered shopping lists, smart price comparisons, unified checkout, and delivery or mall-hub collection across every store.",
     status: "Ready for Testing",
-    link: "https://moreki.app",
+    link: "https://studio--studio-7917528504-89a87.us-central1.hosted.app/",
     hasVideo: true,
+    videoSrc: "/assets/videos/MOREKI APP Presentation 1.mp4",
     tags: ["Voice-Commerce", "Logistics", "Retail"]
   },
   {
@@ -90,12 +91,17 @@ const ProjectsSection = () => {
                   {app.description}
                 </p>
 
-                {/* VIDEO PLACEHOLDER - Positioned for Proof of Concept */}
                 {app.hasVideo && (
-                  <div className="w-full aspect-video bg-black/40 rounded-2xl mb-8 border border-white/5 flex flex-col items-center justify-center group cursor-pointer relative overflow-hidden">
-                    <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
-                    <Play className="text-primary mb-2 group-hover:scale-110 transition-transform" size={40} fill="currentColor" />
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-primary/80">Demo Video Coming Thursday</p>
+                  <div className="w-full aspect-video bg-black/40 rounded-2xl mb-8 border border-white/5 relative overflow-hidden">
+                    <video
+                      src={app.videoSrc}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      controls
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 )}
               </div>
