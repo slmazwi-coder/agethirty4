@@ -1,18 +1,26 @@
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Plus, Users } from "lucide-react";
+import { Linkedin, Twitter, Plus, Users, Facebook } from "lucide-react";
 
 const team = [
   { 
     name: "Someleze Lucky Mazwi", 
     role: "Founder & Managing Director", 
     bio: "Civil Engineering technician and project manager turned tech entrepreneur. Bringing engineering rigor and a solution-driven identity to AGE THIRTY4's digital architecture.",
-    image: "/assets/someleze-corporate.jpg" 
+    image: "/assets/someleze-corporate.jpg",
+    socials: [
+      { name: "LinkedIn", url: "https://www.linkedin.com/in/someleze-mazwi-35596445", Icon: Linkedin },
+      { name: "Facebook", url: "https://www.facebook.com/someleze.mazwi", Icon: Facebook },
+      { name: "Tiktok", url: "https://www.tiktok.com/@someleze.boetsomi", Icon: Twitter },
+    ]
   },
   { 
     name: "Sawo Mginqi", 
     role: "Partner & Head of Strategy", 
     bio: "Seasoned marketing strategist expert in digital growth and translating complex technical innovations into compelling market narratives.",
-    image: "/assets/sawo-corporate.jpg" 
+    image: "/assets/sawo-corporate.jpg",
+    socials: [
+      { name: "LinkedIn", url: "#", Icon: Linkedin },
+    ]
   },
 ];
 
@@ -84,8 +92,11 @@ const AboutSection = () => {
                   {member.bio}
                 </p>
                 <div className="flex gap-4 mt-auto">
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors"><Linkedin size={18} /></a>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors"><Twitter size={18} /></a>
+                  {member.socials.map(social => (
+                    <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                      <social.Icon size={18} />
+                    </a>
+                  ))}
                 </div>
               </motion.div>
             ))}
