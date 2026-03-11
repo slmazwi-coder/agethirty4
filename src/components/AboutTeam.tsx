@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Plus, Users, Facebook } from "lucide-react";
+import { Linkedin, Twitter, Plus, Users, Facebook, Instagram } from "lucide-react";
 
 const team = [
   { 
@@ -20,6 +20,9 @@ const team = [
     image: "/assets/sawo-corporate.jpg",
     socials: [
       { name: "LinkedIn", url: "#", Icon: Linkedin },
+      { name: "Facebook", url: "https://www.facebook.com/share/1DioK1oFhb/?mibextid=wwXIfr", Icon: Facebook },
+      { name: "Tiktok", url: "https://www.tiktok.com/@colourful_saved_makoti?_r=1&_t=ZS-", Icon: Twitter },
+      { name: "Instagram", url: "https://www.instagram.com/colourful_saved_being?igsh=MXU1c3VudHZ6aWZjYw%3D%3D&utm_source=qr", Icon: Instagram }
     ]
   },
 ];
