@@ -24,9 +24,9 @@ const HelpDesk = () => {
     { 
       icon: Mail, 
       title: "Email Support", 
-      info: "slmazwi@gmail.com", 
+      info: "info@agethirty4.co.za", 
       sub: "Official Case Tracking",
-      link: "mailto:slmazwi@gmail.com"
+      link: "mailto:info@agethirty4.co.za"
     },
     { 
       icon: Phone, 
@@ -86,7 +86,7 @@ const HelpDesk = () => {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
-                  placeholder="you@company.com"
+                  placeholder="info@agethirty4.co.za"
                 />
               </div>
             </div>
