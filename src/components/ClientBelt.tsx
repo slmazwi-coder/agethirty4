@@ -4,26 +4,21 @@ const clients = [
   {
     name: "Giwu's Funeral Services",
     src: "/clients/giwus-funeral-services.png",
-    lightBg: true,  // light logo → white card
   },
   {
     name: "Kingdom Conscious Logistics",
     src: "/clients/kingdom-conscious-logistics.png",
-    lightBg: true,  // white background logo
   },
   {
     name: "Mt. Hargreaves Sen. Sec. School",
-    src: "/clients/mt-hargreaves-school.png",
-    lightBg: false, // dark navy logo — show on subtle dark card
+    src: "/clients/mt-hargreaves.png",
   },
   {
     name: "Mabillions Deco",
     src: "/clients/mabillions-deco.png",
-    lightBg: false, // dark background logo
   },
 ];
 
-// Duplicate for seamless infinite loop
 const doubled = [...clients, ...clients];
 
 const ClientBelt = () => {
@@ -37,11 +32,7 @@ const ClientBelt = () => {
 
         <div className="cb-track">
           {doubled.map((client, i) => (
-            <div
-              key={i}
-              className={`cb-card ${client.lightBg ? "cb-card--light" : "cb-card--dark"}`}
-              title={client.name}
-            >
+            <div key={i} className="cb-item" title={client.name}>
               <img
                 src={client.src}
                 alt={client.name}
@@ -67,7 +58,7 @@ const ClientBelt = () => {
       <style>{`
         .cb-section {
           width: 100%;
-          padding: 48px 0 36px;
+          padding: 48px 0 40px;
           overflow: hidden;
           background: transparent;
         }
@@ -78,8 +69,8 @@ const ClientBelt = () => {
           font-weight: 700;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
-          margin-bottom: 28px;
+          color: rgba(255,255,255,0.3);
+          margin-bottom: 32px;
         }
 
         .cb-wrapper {
@@ -91,7 +82,7 @@ const ClientBelt = () => {
         .cb-fade {
           position: absolute;
           top: 0; bottom: 0;
-          width: 100px;
+          width: 120px;
           z-index: 2;
           pointer-events: none;
         }
@@ -107,10 +98,10 @@ const ClientBelt = () => {
         .cb-track {
           display: flex;
           align-items: center;
-          gap: 32px;
+          gap: 80px;
           width: max-content;
-          animation: cbScroll 30s linear infinite;
-          padding: 12px 0;
+          animation: cbScroll 28s linear infinite;
+          padding: 8px 0;
         }
         .cb-track:hover {
           animation-play-state: paused;
@@ -121,75 +112,63 @@ const ClientBelt = () => {
           100% { transform: translateX(-50%); }
         }
 
-        .cb-card {
+        .cb-item {
           flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 150px;
-          height: 100px;
-          border-radius: 14px;
-          padding: 12px;
-          overflow: hidden;
-          opacity: 0.8;
-          transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-          cursor: default;
+          opacity: 0.6;
+          transition: opacity 0.35s ease, transform 0.35s ease;
+          filter: grayscale(20%);
         }
-        .cb-card:hover {
+        .cb-item:hover {
           opacity: 1;
-          transform: translateY(-4px) scale(1.05);
-        }
-
-        /* White card for logos with light backgrounds */
-        .cb-card--light {
-          background: #ffffff;
-          box-shadow: 0 2px 20px rgba(0,0,0,0.5);
-        }
-        .cb-card--light:hover {
-          box-shadow: 0 8px 32px rgba(255,255,255,0.15);
-        }
-
-        /* Subtle dark card for logos with dark backgrounds */
-        .cb-card--dark {
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.1);
-          box-shadow: 0 2px 12px rgba(0,0,0,0.4);
-        }
-        .cb-card--dark:hover {
-          background: rgba(255,255,255,0.09);
-          box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+          transform: scale(1.06);
+          filter: grayscale(0%);
         }
 
         .cb-logo {
-          width: 100%;
-          height: 100%;
+          height: 120px;
+          width: auto;
+          max-width: 220px;
           object-fit: contain;
           display: block;
           user-select: none;
         }
 
-        /* Shown when image fails to load */
         .cb-fallback {
-          font-size: 0.6rem;
+          font-size: 0.7rem;
           font-weight: 600;
+          color: rgba(255,255,255,0.4);
           text-align: center;
-          color: rgba(255,255,255,0.45);
+          max-width: 160px;
           line-height: 1.4;
         }
 
-        @media (max-width: 640px) {
-          .cb-card {
-            width: 108px;
-            height: 72px;
-            border-radius: 10px;
-            padding: 8px;
+        @media (max-width: 768px) {
+          .cb-logo {
+            height: 90px;
+            max-width: 160px;
           }
           .cb-track {
-            gap: 20px;
+            gap: 56px;
+          }
+          .cb-fade {
+            width: 70px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .cb-logo {
+            height: 72px;
+            max-width: 130px;
+          }
+          .cb-track {
+            gap: 40px;
             animation-duration: 22s;
           }
           .cb-fade {
-            width: 50px;
+            width: 48px;
           }
         }
       `}</style>
