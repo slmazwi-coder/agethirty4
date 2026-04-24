@@ -1,46 +1,63 @@
 import React from "react";
 
-// Client logos — replace these src paths with your actual image paths in /public or wherever you host them
 const clients = [
   {
     name: "Giwu's Funeral Services",
     src: "/clients/giwus-funeral-services.png",
+    lightBg: true,  // light logo → white card
   },
   {
     name: "Kingdom Conscious Logistics",
     src: "/clients/kingdom-conscious-logistics.png",
+    lightBg: true,  // white background logo
   },
   {
-    name: "Mt. Hargreaves Senior Secondary School",
+    name: "Mt. Hargreaves Sen. Sec. School",
     src: "/clients/mt-hargreaves-school.png",
+    lightBg: false, // dark navy logo — show on subtle dark card
   },
   {
     name: "Mabillions Deco",
     src: "/clients/mabillions-deco.png",
+    lightBg: false, // dark background logo
   },
 ];
 
-// Duplicate the list so the scroll loop is seamless
+// Duplicate for seamless infinite loop
 const doubled = [...clients, ...clients];
 
 const ClientBelt = () => {
   return (
-    <section className="client-belt-section">
-      <p className="client-belt-label">Trusted by</p>
-      <div className="client-belt-track-wrapper">
-        {/* Fade edges */}
-        <div className="client-belt-fade client-belt-fade--left" />
-        <div className="client-belt-fade client-belt-fade--right" />
+    <section className="cb-section">
+      <p className="cb-label">Trusted by</p>
 
-        <div className="client-belt-track">
+      <div className="cb-wrapper">
+        <div className="cb-fade cb-fade-left" />
+        <div className="cb-fade cb-fade-right" />
+
+        <div className="cb-track">
           {doubled.map((client, i) => (
-            <div key={i} className="client-belt-item">
+            <div
+              key={i}
+              className={`cb-card ${client.lightBg ? "cb-card--light" : "cb-card--dark"}`}
+              title={client.name}
+            >
               <img
                 src={client.src}
                 alt={client.name}
-                title={client.name}
-                className="client-belt-logo"
+                className="cb-logo"
                 draggable={false}
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.style.display = "none";
+                  const parent = target.parentElement;
+                  if (parent && !parent.querySelector(".cb-fallback")) {
+                    const span = document.createElement("span");
+                    span.className = "cb-fallback";
+                    span.textContent = client.name;
+                    parent.appendChild(span);
+                  }
+                }}
               />
             </div>
           ))}
@@ -48,103 +65,131 @@ const ClientBelt = () => {
       </div>
 
       <style>{`
-        .client-belt-section {
+        .cb-section {
           width: 100%;
-          padding: 40px 0 32px;
-          border-top: 1px solid rgba(255,255,255,0.07);
+          padding: 48px 0 36px;
           overflow: hidden;
           background: transparent;
         }
 
-        .client-belt-label {
+        .cb-label {
           text-align: center;
-          font-size: 0.7rem;
-          font-weight: 600;
-          letter-spacing: 0.18em;
+          font-size: 0.65rem;
+          font-weight: 700;
+          letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: var(--muted-foreground, #888);
-          margin-bottom: 20px;
+          color: rgba(255,255,255,0.35);
+          margin-bottom: 28px;
         }
 
-        .client-belt-track-wrapper {
+        .cb-wrapper {
           position: relative;
           width: 100%;
           overflow: hidden;
         }
 
-        /* Soft fade on both edges */
-        .client-belt-fade {
+        .cb-fade {
           position: absolute;
-          top: 0;
-          bottom: 0;
-          width: 120px;
+          top: 0; bottom: 0;
+          width: 100px;
           z-index: 2;
           pointer-events: none;
         }
-        .client-belt-fade--left {
+        .cb-fade-left {
           left: 0;
-          background: linear-gradient(to right, var(--background, #0a0a0a), transparent);
+          background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
         }
-        .client-belt-fade--right {
+        .cb-fade-right {
           right: 0;
-          background: linear-gradient(to left, var(--background, #0a0a0a), transparent);
+          background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
         }
 
-        .client-belt-track {
+        .cb-track {
           display: flex;
           align-items: center;
-          gap: 64px;
+          gap: 32px;
           width: max-content;
-          animation: clientScroll 28s linear infinite;
-          padding: 8px 0;
+          animation: cbScroll 30s linear infinite;
+          padding: 12px 0;
         }
-
-        .client-belt-track:hover {
+        .cb-track:hover {
           animation-play-state: paused;
         }
 
-        @keyframes clientScroll {
+        @keyframes cbScroll {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
 
-        .client-belt-item {
+        .cb-card {
           flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 72px;
-          padding: 0 16px;
-          opacity: 0.7;
-          transition: opacity 0.3s ease, filter 0.3s ease;
-          filter: grayscale(40%);
+          width: 150px;
+          height: 100px;
+          border-radius: 14px;
+          padding: 12px;
+          overflow: hidden;
+          opacity: 0.8;
+          transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+          cursor: default;
         }
-
-        .client-belt-item:hover {
+        .cb-card:hover {
           opacity: 1;
-          filter: grayscale(0%);
+          transform: translateY(-4px) scale(1.05);
         }
 
-        .client-belt-logo {
-          height: 60px;
-          width: auto;
-          max-width: 160px;
+        /* White card for logos with light backgrounds */
+        .cb-card--light {
+          background: #ffffff;
+          box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+        .cb-card--light:hover {
+          box-shadow: 0 8px 32px rgba(255,255,255,0.15);
+        }
+
+        /* Subtle dark card for logos with dark backgrounds */
+        .cb-card--dark {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        .cb-card--dark:hover {
+          background: rgba(255,255,255,0.09);
+          box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+        }
+
+        .cb-logo {
+          width: 100%;
+          height: 100%;
           object-fit: contain;
           display: block;
           user-select: none;
         }
 
+        /* Shown when image fails to load */
+        .cb-fallback {
+          font-size: 0.6rem;
+          font-weight: 600;
+          text-align: center;
+          color: rgba(255,255,255,0.45);
+          line-height: 1.4;
+        }
+
         @media (max-width: 640px) {
-          .client-belt-logo {
-            height: 44px;
-            max-width: 110px;
+          .cb-card {
+            width: 108px;
+            height: 72px;
+            border-radius: 10px;
+            padding: 8px;
           }
-          .client-belt-track {
-            gap: 40px;
-            animation-duration: 20s;
+          .cb-track {
+            gap: 20px;
+            animation-duration: 22s;
           }
-          .client-belt-fade {
-            width: 60px;
+          .cb-fade {
+            width: 50px;
           }
         }
       `}</style>
