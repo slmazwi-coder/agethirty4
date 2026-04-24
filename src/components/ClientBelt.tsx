@@ -1,4 +1,3 @@
-export default ClientBelt;
 import React from "react";
 
 const clients = [
@@ -13,11 +12,9 @@ const doubled = [...clients, ...clients];
 const ClientBelt = () => (
   <section className="cb-section">
     <p className="cb-label">Trusted by</p>
-
     <div className="cb-wrapper">
       <div className="cb-fade cb-fade-left" />
       <div className="cb-fade cb-fade-right" />
-
       <div className="cb-track">
         {doubled.map((client, i) => (
           <div key={i} className="cb-item" title={client.name}>
@@ -50,7 +47,6 @@ const ClientBelt = () => (
         overflow: hidden;
         background: transparent;
       }
-
       .cb-label {
         text-align: center;
         font-size: 0.65rem;
@@ -60,13 +56,11 @@ const ClientBelt = () => (
         color: rgba(255,255,255,0.3);
         margin-bottom: 32px;
       }
-
       .cb-wrapper {
         position: relative;
         width: 100%;
         overflow: hidden;
       }
-
       .cb-fade {
         position: absolute;
         top: 0; bottom: 0;
@@ -82,7 +76,6 @@ const ClientBelt = () => (
         right: 0;
         background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
       }
-
       .cb-track {
         display: flex;
         align-items: center;
@@ -94,12 +87,10 @@ const ClientBelt = () => (
       .cb-track:hover {
         animation-play-state: paused;
       }
-
       @keyframes cbScroll {
         0%   { transform: translateX(0); }
         100% { transform: translateX(-50%); }
       }
-
       .cb-item {
         flex-shrink: 0;
         display: flex;
@@ -112,7 +103,6 @@ const ClientBelt = () => (
         opacity: 1;
         transform: scale(1.07);
       }
-
       .cb-logo {
         height: 150px;
         width: auto;
@@ -121,7 +111,6 @@ const ClientBelt = () => (
         display: block;
         user-select: none;
       }
-
       .cb-fallback {
         font-size: 0.7rem;
         font-weight: 600;
@@ -130,26 +119,15 @@ const ClientBelt = () => (
         max-width: 160px;
         line-height: 1.4;
       }
-
       @media (max-width: 768px) {
-        .cb-logo {
-          height: 110px;
-          max-width: 190px;
-        }
+        .cb-logo { height: 110px; max-width: 190px; }
         .cb-track { gap: 64px; }
         .cb-fade  { width: 80px; }
       }
-
       @media (max-width: 480px) {
-        .cb-logo {
-          height: 80px;
-          max-width: 140px;
-        }
-        .cb-track {
-          gap: 44px;
-          animation-duration: 22s;
-        }
-        .cb-fade { width: 50px; }
+        .cb-logo { height: 80px; max-width: 140px; }
+        .cb-track { gap: 44px; animation-duration: 22s; }
+        .cb-fade  { width: 50px; }
       }
     `}</style>
   </section>
