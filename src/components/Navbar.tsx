@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const navItems = ["Apps", "About", "Services", "Support"];
+const navItems = ["Apps", "About", "Services", "Packages", "Areas", "Support"];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,6 @@ const Navbar = () => {
   const scrollTo = (id: string) => {
     const sectionId = id.toLowerCase();
     setOpen(false);
-
     if (location.pathname !== "/") {
       navigate(`/#${sectionId}`);
     } else {
