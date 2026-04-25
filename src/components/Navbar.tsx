@@ -40,7 +40,7 @@ const Navbar = () => {
           className="flex items-center gap-3"
         >
           <img
-            src="/favicon.svg"
+            src="/Logo.jpg"
             alt="AGE THIRTY4 logo"
             className="h-16 w-auto object-contain mix-blend-screen"
           />
