@@ -11,11 +11,13 @@ const Footer = () => (
 
         {/* Logo + tagline */}
         <div className="flex items-center gap-4">
-          <img
-            src="/Logo.jpg"
-            alt="AGE THIRTY4 logo"
-            className="h-20 w-auto object-contain mix-blend-screen"
-          />
+          <div className="rounded-xl overflow-hidden bg-background p-1">
+            <img
+              src="/Logo.jpg"
+              alt="AGE THIRTY4 logo"
+              className="h-20 w-auto object-contain block"
+            />
+          </div>
           <div>
             <span className="text-xl font-display font-bold tracking-tight">
               AGE <span className="text-gradient">THIRTY4</span>
