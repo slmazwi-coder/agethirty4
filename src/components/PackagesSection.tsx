@@ -208,7 +208,7 @@ const PackagesSection = () => {
 
               {/* CTA */}
               <a
-                href={`https://wa.me/27616122588?text=Hi AGE THIRTY4, I'm interested in the ${pkg.name} package`}
+                href={`https://wa.me/27616122586?text=Hi AGE THIRTY4, I'm interested in the ${pkg.name} package`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 w-full py-3 rounded-xl text-sm font-semibold text-center transition-all duration-200 hover:opacity-90 hover:shadow-lg"
