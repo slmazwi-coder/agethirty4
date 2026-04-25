@@ -18,8 +18,8 @@ const packages = [
       "School email included",
       "WhatsApp link & basic chatbot",
       "Online admissions",
-      "Admin Portal for easy updates managed by you"
-      "Student Portal for report downloads for students"
+      "Admin Portal for easy updates managed by you",
+      "Student Portal for report downloads for students",
       "Local SEO setup for regional visibility",
     ],
     gain: "Immediate credibility and a fast launch path for your school.",
