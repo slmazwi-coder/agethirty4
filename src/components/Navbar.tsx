@@ -39,11 +39,13 @@ const Navbar = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-3"
         >
-          <img
-            src="/Logo.jpg"
-            alt="AGE THIRTY4 logo"
-            className="h-16 w-auto object-contain mix-blend-screen"
-          />
+          <div className="rounded-xl overflow-hidden bg-background p-1">
+            <img
+              src="/Logo.jpg"
+              alt="AGE THIRTY4 logo"
+              className="h-16 w-auto object-contain block"
+            />
+          </div>
           <span className="text-2xl font-display font-bold tracking-tight">
             AGE <span className="text-gradient">THIRTY4</span>
           </span>
