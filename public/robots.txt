@@ -1,3 +1,6 @@
+# AGE THIRTY4 — robots.txt
+# https://agethirty4.co.za
+
 User-agent: Googlebot
 Allow: /
 
@@ -12,3 +15,8 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /src/
+Disallow: /_next/
+Disallow: /node_modules/
+
+Sitemap: https://agethirty4.co.za/sitemap.xml
