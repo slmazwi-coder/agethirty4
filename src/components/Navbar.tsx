@@ -19,31 +19,37 @@ const Navbar = () => {
       return;
     }
 
-    // Close menu first, then scroll after animation completes
     setOpen(false);
     setTimeout(() => {
       const el = document.getElementById(sectionId);
       if (el) {
-        const navHeight = 72; // account for fixed navbar height
+        const navHeight = 72;
         const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
         window.scrollTo({ top, behavior: "smooth" });
       }
-    }, 350); // wait for mobile menu close animation
+    }, 350);
   };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
+
+        {/* Logo + wordmark */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2"
+          className="flex items-center gap-3"
         >
+          <img
+            src="/favicon.svg"
+            alt="AGE THIRTY4 logo"
+            className="h-16 w-auto object-contain mix-blend-screen"
+          />
           <span className="text-2xl font-display font-bold tracking-tight">
             AGE <span className="text-gradient">THIRTY4</span>
           </span>
         </button>
 
-        {/* Desktop */}
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <button
