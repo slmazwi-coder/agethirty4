@@ -14,7 +14,7 @@ const Footer = () => (
           <img
             src="/Logo.png"
             alt="AGE THIRTY4 logo"
-            className="h-20 w-auto object-contain mix-blend-lighten"
+            className="h-20 w-auto object-contain"
           />
           <div>
             <span className="text-xl font-display font-bold tracking-tight">
