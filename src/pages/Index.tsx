@@ -1,221 +1,40 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta name="google-site-verification" content="WfkY_bPYR8a5XL6LzRJlobRUjOafiV-PKDBOPQao0CM" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import AppsShowcase from "@/components/AppsShowcase";
+import AboutTeam from "@/components/AboutTeam";
+import ServicesSection from "@/components/ServicesSection";
+import PackagesSection from "@/components/PackagesSection";
+import AreasWeServe from "@/components/AreasWeServe";
+import HelpDesk from "@/components/HelpDesk";
+import Footer from "@/components/Footer";
 
-    <!-- Favicon -->
-    <link rel="icon" href="/Favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/Favicon.png" />
+const Index = () => {
+  const location = useLocation();
 
-    <!-- ═══════════════════════════════════════════════
-         PRIMARY META TAGS
-    ═══════════════════════════════════════════════ -->
-    <title>AGE THIRTY4 | Website Development & Hosting in Durban, Mthatha, East London & More</title>
-    <meta name="description" content="AGE THIRTY4 builds powerful websites, web apps and custom software for businesses in Durban, Mthatha, East London, Pietermaritzburg, Newcastle, Richards Bay, Kokstad, Matatiele, Umzimkulu, Butterworth and Queenstown. Affordable website development and reliable hosting across South Africa." />
-    <meta name="keywords" content="website development Durban, website development Mthatha, website development East London, website development Pietermaritzburg, website development Newcastle, website development Richards Bay, website development Kokstad, website development Matatiele, website development Umzimkulu, website development Butterworth, website development Queenstown, web development South Africa, website hosting Durban, website hosting KwaZulu-Natal, website hosting Eastern Cape, custom app development South Africa, e-commerce development South Africa, construction software South Africa, project management software South Africa, AGE THIRTY4, agethirty4" />
-    <meta name="author" content="AGE THIRTY4" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0a0a0a" />
-    <link rel="canonical" href="https://agethirty4.co.za/" />
-
-    <!-- ═══════════════════════════════════════════════
-         OPEN GRAPH — Facebook, WhatsApp, LinkedIn
-    ═══════════════════════════════════════════════ -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://agethirty4.co.za/" />
-    <meta property="og:site_name" content="AGE THIRTY4" />
-    <meta property="og:title" content="AGE THIRTY4 | Website Development & Hosting Across KwaZulu-Natal & Eastern Cape" />
-    <meta property="og:description" content="AGE THIRTY4 builds powerful websites, web apps and custom software for businesses across KwaZulu-Natal and the Eastern Cape. Serving Durban, Mthatha, East London, Pietermaritzburg, Newcastle, Richards Bay, Kokstad, Matatiele, Umzimkulu, Butterworth and Queenstown." />
-    <meta property="og:image" content="https://agethirty4.co.za/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_ZA" />
-
-    <!-- ═══════════════════════════════════════════════
-         TWITTER / X CARD
-    ═══════════════════════════════════════════════ -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@agethirty4" />
-    <meta name="twitter:title" content="AGE THIRTY4 | Website Development & Hosting Across KwaZulu-Natal & Eastern Cape" />
-    <meta name="twitter:description" content="AGE THIRTY4 builds powerful websites, web apps and custom software for businesses across KwaZulu-Natal and the Eastern Cape." />
-    <meta name="twitter:image" content="https://agethirty4.co.za/og-image.png" />
-
-    <!-- ═══════════════════════════════════════════════
-         GEO TAGS
-    ═══════════════════════════════════════════════ -->
-    <meta name="geo.region" content="ZA-KZN" />
-    <meta name="geo.placename" content="Durban, KwaZulu-Natal, South Africa" />
-    <meta name="ICBM" content="-29.8587, 31.0218" />
-
-    <!-- ═══════════════════════════════════════════════
-         SCHEMA MARKUP (JSON-LD)
-    ═══════════════════════════════════════════════ -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://agethirty4.co.za/#organization",
-          "name": "AGE THIRTY4",
-          "url": "https://agethirty4.co.za",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://agethirty4.co.za/Logo.png"
-          },
-          "description": "AGE THIRTY4 develops and launches powerful websites, web apps and custom software across e-commerce, engineering, project management and construction for businesses across KwaZulu-Natal and the Eastern Cape.",
-          "foundingDate": "2020",
-          "areaServed": [
-            { "@type": "City", "name": "Durban" },
-            { "@type": "City", "name": "Pietermaritzburg" },
-            { "@type": "City", "name": "Newcastle" },
-            { "@type": "City", "name": "Richards Bay" },
-            { "@type": "City", "name": "Kokstad" },
-            { "@type": "City", "name": "Matatiele" },
-            { "@type": "City", "name": "Umzimkulu" },
-            { "@type": "City", "name": "Mthatha" },
-            { "@type": "City", "name": "Butterworth" },
-            { "@type": "City", "name": "Queenstown" },
-            { "@type": "City", "name": "East London" },
-            { "@type": "State", "name": "KwaZulu-Natal" },
-            { "@type": "State", "name": "Eastern Cape" },
-            { "@type": "Country", "name": "South Africa" }
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "AGE THIRTY4 Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Website Development",
-                  "description": "Professional website development for businesses across KwaZulu-Natal and the Eastern Cape."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Website Hosting",
-                  "description": "Reliable, fast website hosting for South African businesses."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "E-commerce Development",
-                  "description": "Custom online store development for South African businesses."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Custom App Development",
-                  "description": "Mobile and web app development tailored for South African industries."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Construction & Project Management Software",
-                  "description": "Industry-specific software for construction and project management teams across South Africa."
-                }
-              }
-            ]
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+27-61-612-2588",
-            "email": "info@agethirty4.co.za",
-            "contactType": "customer service",
-            "availableLanguage": ["English", "Zulu", "Xhosa"],
-            "areaServed": "ZA",
-            "hoursAvailable": {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-              "opens": "08:00",
-              "closes": "18:00"
-            }
-          },
-          "sameAs": [
-            "https://www.facebook.com/agethirty4",
-            "https://www.linkedin.com/company/agethirty4",
-            "https://twitter.com/agethirty4"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://agethirty4.co.za/#website",
-          "url": "https://agethirty4.co.za",
-          "name": "AGE THIRTY4",
-          "description": "Website development, hosting and custom software for businesses across KwaZulu-Natal and the Eastern Cape.",
-          "publisher": {
-            "@id": "https://agethirty4.co.za/#organization"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://agethirty4.co.za/?s={search_term_string}"
-            },
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://agethirty4.co.za/#localbusiness",
-          "name": "AGE THIRTY4",
-          "image": "https://agethirty4.co.za/Logo.png",
-          "url": "https://agethirty4.co.za",
-          "telephone": "+27-61-612-2588",
-          "email": "info@agethirty4.co.za",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Durban",
-            "addressRegion": "KwaZulu-Natal",
-            "addressCountry": "ZA"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": -29.8587,
-            "longitude": 31.0218
-          },
-          "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-            "opens": "08:00",
-            "closes": "18:00"
-          },
-          "priceRange": "$$",
-          "currenciesAccepted": "ZAR",
-          "paymentAccepted": "Cash, Credit Card, EFT",
-          "serviceArea": [
-            { "@type": "City", "name": "Durban" },
-            { "@type": "City", "name": "Pietermaritzburg" },
-            { "@type": "City", "name": "Newcastle" },
-            { "@type": "City", "name": "Richards Bay" },
-            { "@type": "City", "name": "Kokstad" },
-            { "@type": "City", "name": "Matatiele" },
-            { "@type": "City", "name": "Umzimkulu" },
-            { "@type": "City", "name": "Mthatha" },
-            { "@type": "City", "name": "Butterworth" },
-            { "@type": "City", "name": "Queenstown" },
-            { "@type": "City", "name": "East London" }
-          ]
-        }
-      ]
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
-    </script>
+  }, [location.hash]);
 
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <HeroSection />
+      <AppsShowcase />
+      <AboutTeam />
+      <ServicesSection />
+      <PackagesSection />
+      <AreasWeServe />
+      <HelpDesk />
+      <Footer />
+    </div>
+  );
+};
+
+export default Index;
