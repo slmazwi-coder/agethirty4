@@ -4,7 +4,7 @@ const areas = [
   { city: "Newcastle", province: "KwaZulu-Natal", desc: "Website development in Newcastle KZN" },
   { city: "Richards Bay", province: "KwaZulu-Natal", desc: "Website development in Richards Bay" },
   { city: "Kokstad", province: "KwaZulu-Natal", desc: "Web development in Kokstad" },
-  { city: "Matatiele", province: "KwaZulu-Natal", desc: "Website development in Matatiele" },
+  { city: "Matatiele", province: "Eatern Cape", desc: "Website development in Matatiele" },
   { city: "Umzimkulu", province: "KwaZulu-Natal", desc: "Web development in Umzimkulu" },
   { city: "Mthatha", province: "Eastern Cape", desc: "Website development in Mthatha" },
   { city: "East London", province: "Eastern Cape", desc: "Website development in East London" },
