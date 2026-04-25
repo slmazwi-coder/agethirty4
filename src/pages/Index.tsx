@@ -5,6 +5,8 @@ import HeroSection from "@/components/HeroSection";
 import AppsShowcase from "@/components/AppsShowcase";
 import AboutTeam from "@/components/AboutTeam";
 import ServicesSection from "@/components/ServicesSection";
+import PackagesSection from "@/components/PackagesSection";
+import AreasWeServe from "@/components/AreasWeServe";
 import HelpDesk from "@/components/HelpDesk";
 import Footer from "@/components/Footer";
 
@@ -27,6 +29,8 @@ const Index = () => {
       <AppsShowcase />
       <AboutTeam />
       <ServicesSection />
+      <PackagesSection />   {/* ← Packages with pricing */}
+      <AreasWeServe />      {/* ← SEO cities section */}
       <HelpDesk />
       <Footer />
     </div>
