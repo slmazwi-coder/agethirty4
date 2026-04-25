@@ -5,33 +5,48 @@ const Footer = () => (
     {/* ── Scrolling client logo belt ── */}
     <ClientBelt />
 
-    {/* ── Original footer content ── */}
+    {/* ── Footer content ── */}
     <div className="py-12 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <span className="text-xl font-display font-bold tracking-tight">
-            AGE <span className="text-gradient">THIRTY4</span>
-          </span>
-          <p className="text-sm text-muted-foreground mt-1">
-            Building software that moves industries forward.
-          </p>
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+
+        {/* Logo + tagline */}
+        <div className="flex items-center gap-4">
+          <img
+            src="/favicon.svg"
+            alt="AGE THIRTY4 logo"
+            className="h-20 w-auto object-contain mix-blend-screen"
+          />
+          <div>
+            <span className="text-xl font-display font-bold tracking-tight">
+              AGE <span className="text-gradient">THIRTY4</span>
+            </span>
+            <p className="text-sm text-muted-foreground mt-1">
+              Building software that moves industries forward.
+            </p>
+          </div>
         </div>
-        <div className="flex gap-8 text-sm text-muted-foreground">
-          {["Apps", "About", "Impact", "Services", "Support"].map((item) => (
+
+        {/* Nav links */}
+        <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+          {["Apps", "About", "Services", "Packages", "Areas", "Support"].map((item) => (
             <button
               key={item}
-              onClick={() =>
-                document
-                  .getElementById(item.toLowerCase())
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => {
+                const el = document.getElementById(item.toLowerCase());
+                if (el) {
+                  const top = el.getBoundingClientRect().top + window.scrollY - 72;
+                  window.scrollTo({ top, behavior: "smooth" });
+                }
+              }}
               className="hover:text-primary transition-colors"
             >
               {item}
             </button>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground">
+
+        {/* Copyright */}
+        <p className="text-xs text-muted-foreground text-center md:text-right">
           © {new Date().getFullYear()} AGE THIRTY4. All rights reserved.
         </p>
       </div>
