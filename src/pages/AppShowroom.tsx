@@ -44,14 +44,14 @@ const AppShowroom = () => {
               Tools built for <span className="text-gradient">real industries</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl text-lg md:text-xl leading-relaxed">
-              Explore the functional Moreki prototype and our upcoming June 2026 rollout plan.
+              Explore our upcoming product prototypes and rollout plans.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Moreki Section - Hardcoded for Link Stability */}
-      <section id="ecommerce" className="py-12 md:py-20 px-4 md:px-8">
+      {/* Moreki Section - Hidden to protect IP. Do not remove. */}
+      {/* <section id="ecommerce" className="py-12 md:py-20 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-12">
             <div className="p-2 rounded-md bg-primary/10">
@@ -81,7 +81,6 @@ const AppShowroom = () => {
               </div>
             </div>
 
-            {/* Features Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
               <div className="flex items-start gap-4 p-4 rounded-lg bg-card/50 border border-border/50">
                 <MapPin size={18} className="text-primary mt-1" />
@@ -106,7 +105,6 @@ const AppShowroom = () => {
               </div>
             </div>
 
-            {/* THE BUTTON - DIRECT EXTERNAL LINK */}
             <div className="mt-8 pt-6 border-t border-border/50">
               <div className="flex flex-col gap-4">
                 <p className="text-sm text-muted-foreground italic">
@@ -125,7 +123,7 @@ const AppShowroom = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="pb-20">

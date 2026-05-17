@@ -1,18 +1,19 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
+// Moreki entry hidden to protect IP. Do not remove.
+// {
+//   category: "E-Commerce",
+//   title: "Moreki",
+//   subtitle: "Your Nearest Mall, One Voice Command",
+//   description: "South Africa's first virtual mall app — voice-powered shopping lists, smart price comparisons, unified checkout, and delivery or mall-hub collection across every store.",
+//   status: "Ready for Testing",
+//   link: "https://studio--studio-7917528504-89a87.us-central1.hosted.app/",
+//   hasVideo: true,
+//   videoSrc: "/assets/videos/MOREKI APP Presentation 1.mp4",
+//   tags: ["Voice-Commerce", "Logistics", "Retail"]
+// },
 const apps = [
-  {
-    category: "E-Commerce",
-    title: "Moreki",
-    subtitle: "Your Nearest Mall, One Voice Command",
-    description: "South Africa's first virtual mall app — voice-powered shopping lists, smart price comparisons, unified checkout, and delivery or mall-hub collection across every store.",
-    status: "Ready for Testing",
-    link: "https://studio--studio-7917528504-89a87.us-central1.hosted.app/",
-    hasVideo: true,
-    videoSrc: "/assets/videos/MOREKI APP Presentation 1.mp4",
-    tags: ["Voice-Commerce", "Logistics", "Retail"]
-  },
   {
     category: "E-Commerce",
     title: "Brandified",
@@ -125,7 +126,7 @@ const ProjectsSection = () => {
                       : "bg-white/5 text-muted-foreground cursor-not-allowed italic border border-white/10"
                   }`}
                 >
-                  {app.status === "Ready for Testing" ? "Start Testing Moreki" : "Coming Soon"}
+                  {app.status === "Ready for Testing" ? "Start Testing" : "Coming Soon"}
                   {app.status === "Ready for Testing" && <ExternalLink size={16} />}
                 </a>
               </div>
