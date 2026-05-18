@@ -1,8 +1,25 @@
 import { useState } from "react";
 
-const packages = [
+type Package = {
+  id: string;
+  badge: string;
+  name: string;
+  tagline: string;
+  price: string;
+  monthly: string;
+  description: string;
+  color: string;
+  accent: string;
+  features: string[];
+  gain: string;
+  note: string;
+  popular?: boolean;
+  category: "school" | "commercial";
+};
+
+const packages: Package[] = [
   {
-    id: "school",
+    id: "school-t1",
     badge: "Education",
     name: "A34 School",
     tagline: "The Foundation",
@@ -11,6 +28,7 @@ const packages = [
     description: "A professional digital identity built specifically for schools — launch with confidence and serve your community online.",
     color: "from-amber-500/20 to-yellow-600/10",
     accent: "#F59E0B",
+    category: "school",
     features: [
       "6 curated pages (Home, About, Academics, etc.)",
       ".co.za domain included",
@@ -26,7 +44,34 @@ const packages = [
     note: "Perfect for primary, secondary and tertiary institutions.",
   },
   {
+    id: "school-t2",
+    badge: "Education+",
+    name: "A34 School Pro",
+    tagline: "The Powerhouse",
+    price: "R9,470",
+    monthly: "R350/mo",
+    description: "Everything in A34 School plus a full e-commerce platform — sell uniforms, books, and supplies directly through your school website.",
+    color: "from-amber-600/20 to-yellow-700/10",
+    accent: "#D97706",
+    popular: true,
+    category: "school",
+    features: [
+      "All A34 School features included",
+      "Complete e-commerce platform with payment integration",
+      "Online store for uniforms, books & supplies",
+      "8+ tailored pages",
+      "Up to 10 school email addresses",
+      "Multilingual AI chatbot",
+      "Invoice generator for EFT payments",
+      "National SEO strategy",
+      "3 months premium monitoring",
+    ],
+    gain: "A complete digital school ecosystem with built-in commerce.",
+    note: "Ideal for schools ready to sell online and serve parents digitally.",
+  },
+  {
     id: "corp-t1",
+    category: "commercial" as const,
     badge: "Business",
     name: "A34 Corp T1",
     tagline: "The Foundation",
@@ -49,6 +94,7 @@ const packages = [
   },
   {
     id: "corp-t2",
+    category: "commercial" as const,
     badge: "Growth",
     name: "A34 Corp T2",
     tagline: "The Connector",
@@ -72,6 +118,7 @@ const packages = [
   },
   {
     id: "corp-t3",
+    category: "commercial" as const,
     badge: "Enterprise",
     name: "A34 Corp T3",
     tagline: "The Empire",
@@ -95,13 +142,9 @@ const packages = [
 ];
 
 const PackagesSection = () => {
-  const [activeTab, setActiveTab] = useState<"all" | "education" | "business">("all");
+  const [activeTab, setActiveTab] = useState<"school" | "commercial">("school");
 
-  const filtered = packages.filter((p) => {
-    if (activeTab === "all") return true;
-    if (activeTab === "education") return p.id === "school";
-    return p.id !== "school";
-  });
+  const filtered = packages.filter((p) => p.category === activeTab);
 
   return (
     <section id="packages" className="py-24 px-6 relative overflow-hidden">
@@ -131,25 +174,27 @@ const PackagesSection = () => {
           </div>
         </div>
 
-        {/* Filter tabs */}
-        <div className="flex justify-center gap-2 mb-12">
-          {(["all", "education", "business"] as const).map((tab) => (
+        {/* Sub-tabs */}
+        <div className="flex justify-center gap-3 mb-12">
+          {(["school", "commercial"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-2 rounded-full text-sm font-medium capitalize transition-all ${
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                 activeTab === tab
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
                   : "border border-border text-muted-foreground hover:text-foreground hover:border-primary/40"
               }`}
             >
-              {tab === "all" ? "All Packages" : tab === "education" ? "Schools" : "Business"}
+              {tab === "school" ? "🎓 School Packages" : "🏢 Commercial Packages"}
             </button>
           ))}
         </div>
 
         {/* Package cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className={`grid grid-cols-1 gap-6 ${
+          filtered.length <= 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-2 xl:grid-cols-3"
+        }`}>
           {filtered.map((pkg) => (
             <div
               key={pkg.id}
