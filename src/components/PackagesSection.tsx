@@ -167,11 +167,6 @@ const PackagesSection = () => {
             Pietermaritzburg, Newcastle, Richards Bay, Kokstad, Matatiele, Umzimkulu, Butterworth and Queenstown.
           </p>
 
-          {/* Founding offer banner */}
-          <div className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-medium">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            Founding 50 Offer — 20% off launch prices · Limited slots remaining
-          </div>
         </div>
 
         {/* Sub-tabs */}
@@ -267,8 +262,8 @@ const PackagesSection = () => {
 
         {/* Bottom note */}
         <p className="text-center text-xs text-muted-foreground mt-10 max-w-2xl mx-auto">
-          All founding packages include priority onboarding, 3 months of premium monitoring, and a founder-only support channel.
-          Payment plans available for approved applicants. Discounts apply to the first 50 clients only.
+          All packages include priority onboarding, 3 months of premium monitoring, and a dedicated support channel.
+          Payment plans available for approved applicants.
         </p>
       </div>
     </section>
