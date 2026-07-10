@@ -45,7 +45,7 @@ const Services = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="p-8 rounded-3xl glass border border-white/5 hover:glow-border transition-all"
+            className="p-8 rounded-3xl glass border border-foreground/5 hover:glow-border transition-all"
           >
             <div className="mb-6">{service.icon}</div>
             <h3 className="text-xl font-bold mb-4">{service.title}</h3>

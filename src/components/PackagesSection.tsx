@@ -26,8 +26,8 @@ const packages: Package[] = [
     price: "R5,750",
     monthly: "R200/mo",
     description: "A professional digital identity built specifically for schools — launch with confidence and serve your community online.",
-    color: "from-amber-500/20 to-yellow-600/10",
-    accent: "#F59E0B",
+    color: "from-primary/20 to-gold-glow/10",
+    accent: "#F4BA0A",
     category: "school",
     features: [
       "6 curated pages (Home, About, Academics, etc.)",
@@ -51,8 +51,8 @@ const packages: Package[] = [
     price: "R9,470",
     monthly: "R350/mo",
     description: "Everything in A34 School plus a full e-commerce platform — sell uniforms, books, and supplies directly through your school website.",
-    color: "from-amber-600/20 to-yellow-700/10",
-    accent: "#D97706",
+    color: "from-primary/25 to-gold-glow/10",
+    accent: "#CEA016",
     popular: true,
     category: "school",
     features: [
@@ -78,7 +78,7 @@ const packages: Package[] = [
     price: "R3,650",
     monthly: "R350/mo",
     description: "Professional identity to launch with confidence. Perfect for new ventures and small practices.",
-    color: "from-zinc-500/20 to-zinc-700/10",
+    color: "from-muted/30 to-muted/10",
     accent: "#A1A1AA",
     features: [
       "6 curated pages (Home, About, Services, etc.)",
@@ -101,8 +101,8 @@ const packages: Package[] = [
     price: "R5,750",
     monthly: "R450/mo",
     description: "A growth-oriented site that connects you to local customers and manages leads intelligently.",
-    color: "from-orange-500/20 to-orange-700/10",
-    accent: "#F97316",
+    color: "from-primary/20 to-gold-glow/10",
+    accent: "#F4BA0A",
     popular: true,
     features: [
       "All T1 benefits",
@@ -125,8 +125,8 @@ const packages: Package[] = [
     price: "R14,250",
     monthly: "R600/mo",
     description: "Full-stack solution for businesses ready to dominate their market — commerce, conversion, and conversation integrated.",
-    color: "from-yellow-500/20 to-amber-600/10",
-    accent: "#EAB308",
+    color: "from-gold-glow/20 to-primary/10",
+    accent: "#FED24C",
     features: [
       "Complete e-commerce platform with payment integration",
       "National SEO strategy to capture broader markets",

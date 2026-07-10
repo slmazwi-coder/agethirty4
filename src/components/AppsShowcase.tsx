@@ -79,7 +79,7 @@ const ProjectsSection = () => {
                   {app.category}
                 </span>
                 <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${
-                  app.status === "Ready for Testing" ? "bg-green-500/10 text-green-500 border border-green-500/20" : "bg-white/5 text-muted-foreground border border-white/10"
+                  app.status === "Ready for Testing" ? "bg-green-500/10 text-green-500 border border-green-500/20" : "bg-foreground/5 text-muted-foreground border border-foreground/10"
                 }`}>
                   {app.status}
                 </span>
@@ -93,7 +93,7 @@ const ProjectsSection = () => {
                 </p>
 
                 {app.hasVideo && (
-                  <div className="w-full aspect-video bg-black/40 rounded-2xl mb-8 border border-white/5 relative overflow-hidden">
+                  <div className="w-full aspect-video bg-black/40 rounded-2xl mb-8 border border-foreground/5 relative overflow-hidden">
                     <video
                       src={app.videoSrc}
                       autoPlay
@@ -110,7 +110,7 @@ const ProjectsSection = () => {
               <div className="space-y-6">
                 <div className="flex flex-wrap gap-2">
                   {app.tags.map(tag => (
-                    <span key={tag} className="text-[10px] bg-white/5 px-2 py-1 rounded-md text-muted-foreground border border-white/5">
+                    <span key={tag} className="text-[10px] bg-foreground/5 px-2 py-1 rounded-md text-muted-foreground border border-foreground/5">
                       {tag}
                     </span>
                   ))}
@@ -123,7 +123,7 @@ const ProjectsSection = () => {
                   className={`flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold transition-all ${
                     app.status === "Ready for Testing" 
                       ? "bg-primary text-primary-foreground hover:opacity-90 shadow-lg shadow-primary/20" 
-                      : "bg-white/5 text-muted-foreground cursor-not-allowed italic border border-white/10"
+                      : "bg-foreground/5 text-muted-foreground cursor-not-allowed italic border border-foreground/10"
                   }`}
                 >
                   {app.status === "Ready for Testing" ? "Start Testing" : "Coming Soon"}
