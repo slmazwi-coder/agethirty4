@@ -1,10 +1,12 @@
 import React from "react";
 
 const clients = [
-  { name: "Giwu's Funeral Services",        src: "/clients/giwus-funeral-services.png" },
-  { name: "Kingdom Conscious Logistics",     src: "/clients/kingdom-conscious-logistics.png" },
+  { name: "Baxlis Real Estate",            src: "/clients/baxlis-real-estate.png" },
+  { name: "Tlotliso Divisions",            src: "/clients/tlotliso-divisions.png" },
+  { name: "Giwu's Funeral Services",       src: "/clients/giwus-funeral-services.png" },
+  { name: "Kingdom Conscious Logistics",   src: "/clients/kingdom-conscious-logistics.png" },
   { name: "Mt. Hargreaves Sen. Sec. School", src: "/clients/mt-hargreaves.png" },
-  { name: "Mabillions Deco",                 src: "/clients/mabillions-deco.png" },
+  { name: "Mabillions Deco",               src: "/clients/mabillions-deco.png" },
 ];
 
 const doubled = [...clients, ...clients];
@@ -53,7 +55,7 @@ const ClientBelt = () => (
         font-weight: 700;
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: rgba(255,255,255,0.3);
+        color: hsl(var(--foreground) / 0.3);
         margin-bottom: 32px;
       }
       .cb-wrapper {
@@ -70,11 +72,11 @@ const ClientBelt = () => (
       }
       .cb-fade-left {
         left: 0;
-        background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+        background: linear-gradient(to right, hsl(var(--background)) 0%, transparent 100%);
       }
       .cb-fade-right {
         right: 0;
-        background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+        background: linear-gradient(to left, hsl(var(--background)) 0%, transparent 100%);
       }
       .cb-track {
         display: flex;
@@ -114,7 +116,7 @@ const ClientBelt = () => (
       .cb-fallback {
         font-size: 0.7rem;
         font-weight: 600;
-        color: rgba(255,255,255,0.4);
+        color: hsl(var(--foreground) / 0.4);
         text-align: center;
         max-width: 160px;
         line-height: 1.4;

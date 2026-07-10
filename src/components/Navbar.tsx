@@ -34,19 +34,16 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
 
-        {/* Logo + wordmark */}
+        {/* Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-3"
+          className="flex items-center"
         >
           <img
             src="/Logo.png"
-            alt="AGE THIRTY4 logo"
-            className="h-16 w-auto object-contain"
+            alt="AGE THIRTY4"
+            className="h-16 md:h-20 w-auto object-contain"
           />
-          <span className="text-2xl font-display font-bold tracking-tight">
-            AGE <span className="text-gradient">THIRTY4</span>
-          </span>
         </button>
 
         {/* Desktop nav */}

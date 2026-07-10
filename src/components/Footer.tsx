@@ -10,20 +10,15 @@ const Footer = () => (
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
 
         {/* Logo + tagline */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
           <img
             src="/Logo.png"
-            alt="AGE THIRTY4 logo"
+            alt="AGE THIRTY4"
             className="h-20 w-auto object-contain"
           />
-          <div>
-            <span className="text-xl font-display font-bold tracking-tight">
-              AGE <span className="text-gradient">THIRTY4</span>
-            </span>
-            <p className="text-sm text-muted-foreground mt-1">
-              Building software that moves industries forward.
-            </p>
-          </div>
+          <p className="text-sm text-muted-foreground text-center sm:text-left max-w-xs">
+            Building software that moves industries forward.
+          </p>
         </div>
 
         {/* Nav links */}

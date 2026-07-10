@@ -60,7 +60,7 @@ const AboutSection = () => {
         </motion.div>
 
         {/* SECTION 2: THE TEAM (Founding Ownership) */}
-        <div className="pt-20 border-t border-white/5">
+        <div className="pt-20 border-t border-foreground/5">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
               <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-foreground">Founding Ownership</h3>
@@ -76,7 +76,7 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl glass border border-white/5 bg-gradient-to-br from-secondary/10 to-transparent flex flex-col"
+                className="p-8 rounded-3xl glass border border-foreground/5 bg-gradient-to-br from-secondary/10 to-transparent flex flex-col"
               >
                 <div className="w-24 h-24 rounded-2xl overflow-hidden mb-6 border-2 border-primary/20 bg-black/20">
                   <img 
