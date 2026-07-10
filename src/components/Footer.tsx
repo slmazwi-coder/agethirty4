@@ -12,7 +12,7 @@ const Footer = () => (
         {/* Logo + tagline */}
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <img
-            src="/Logo.png"
+            src="/Logo.png?v=2"
             alt="AGE THIRTY4"
             className="h-20 w-auto object-contain"
           />
