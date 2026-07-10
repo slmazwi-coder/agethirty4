@@ -40,7 +40,7 @@ const Navbar = () => {
           className="flex items-center"
         >
           <img
-            src="/Logo.png"
+            src="/Logo.png?v=2"
             alt="AGE THIRTY4"
             className="h-16 md:h-20 w-auto object-contain"
           />

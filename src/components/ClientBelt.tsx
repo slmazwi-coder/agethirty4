@@ -1,12 +1,12 @@
 import React from "react";
 
 const clients = [
-  { name: "Baxlis Real Estate",            src: "/clients/baxlis-real-estate.png" },
-  { name: "Tlotliso Divisions",            src: "/clients/tlotliso-divisions.png" },
-  { name: "Giwu's Funeral Services",       src: "/clients/giwus-funeral-services.png" },
-  { name: "Kingdom Conscious Logistics",   src: "/clients/kingdom-conscious-logistics.png" },
-  { name: "Mt. Hargreaves Sen. Sec. School", src: "/clients/mt-hargreaves.png" },
-  { name: "Mabillions Deco",               src: "/clients/mabillions-deco.png" },
+  { name: "Baxlis Real Estate",            src: "/clients/baxlis-real-estate.png?v=2" },
+  { name: "Tlotliso Divisions",            src: "/clients/tlotliso-divisions.png?v=2" },
+  { name: "Giwu's Funeral Services",       src: "/clients/giwus-funeral-services.png?v=2" },
+  { name: "Kingdom Conscious Logistics",   src: "/clients/kingdom-conscious-logistics.png?v=2" },
+  { name: "Mt. Hargreaves Sen. Sec. School", src: "/clients/mt-hargreaves.png?v=2" },
+  { name: "Mabillions Deco",               src: "/clients/mabillions-deco.png?v=2" },
 ];
 
 const doubled = [...clients, ...clients];
