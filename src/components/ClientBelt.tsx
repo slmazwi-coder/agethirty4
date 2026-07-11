@@ -1,12 +1,12 @@
 import React from "react";
 
 const clients = [
-  { name: "Baxlis Real Estate",            src: "/clients/baxlis-real-estate.png?v=2" },
-  { name: "Tlotliso Divisions",            src: "/clients/tlotliso-divisions.png?v=2" },
-  { name: "Giwu's Funeral Services",       src: "/clients/giwus-funeral-services.png?v=2" },
-  { name: "Kingdom Conscious Logistics",   src: "/clients/kingdom-conscious-logistics.png?v=2" },
-  { name: "Mt. Hargreaves Sen. Sec. School", src: "/clients/mt-hargreaves.png?v=2" },
-  { name: "Mabillions Deco",               src: "/clients/mabillions-deco.png?v=2" },
+  { name: "Baxlis Real Estate",            src: "/clients/baxlis-real-estate.png?v=3" },
+  { name: "Tlotliso Divisions",            src: "/clients/tlotliso-divisions.png?v=3" },
+  { name: "Giwu's Funeral Services",       src: "/clients/giwus-funeral-services.png?v=3" },
+  { name: "Kingdom Conscious Logistics",   src: "/clients/kingdom-conscious-logistics.png?v=3" },
+  { name: "Mt. Hargreaves Sen. Sec. School", src: "/clients/mt-hargreaves.png?v=3" },
+  { name: "Mabillions Deco",               src: "/clients/mabillions-deco.png?v=3" },
 ];
 
 const doubled = [...clients, ...clients];
@@ -45,18 +45,18 @@ const ClientBelt = () => (
     <style>{`
       .cb-section {
         width: 100%;
-        padding: 48px 0 44px;
+        padding: 40px 0 36px;
         overflow: hidden;
         background: transparent;
       }
       .cb-label {
         text-align: center;
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         font-weight: 700;
-        letter-spacing: 0.22em;
+        letter-spacing: 0.25em;
         text-transform: uppercase;
-        color: hsl(var(--foreground) / 0.3);
-        margin-bottom: 32px;
+        color: hsl(var(--muted-foreground));
+        margin-bottom: 24px;
       }
       .cb-wrapper {
         position: relative;
@@ -66,7 +66,7 @@ const ClientBelt = () => (
       .cb-fade {
         position: absolute;
         top: 0; bottom: 0;
-        width: 130px;
+        width: 100px;
         z-index: 2;
         pointer-events: none;
       }
@@ -81,9 +81,9 @@ const ClientBelt = () => (
       .cb-track {
         display: flex;
         align-items: center;
-        gap: 96px;
+        gap: 72px;
         width: max-content;
-        animation: cbScroll 30s linear infinite;
+        animation: cbScroll 32s linear infinite;
         padding: 8px 0;
       }
       .cb-track:hover {
@@ -98,38 +98,38 @@ const ClientBelt = () => (
         display: flex;
         align-items: center;
         justify-content: center;
-        opacity: 0.65;
+        opacity: 0.6;
         transition: opacity 0.35s ease, transform 0.35s ease;
       }
       .cb-item:hover {
         opacity: 1;
-        transform: scale(1.07);
+        transform: scale(1.05);
       }
       .cb-logo {
-        height: 150px;
+        height: 80px;
         width: auto;
-        max-width: 260px;
+        max-width: 160px;
         object-fit: contain;
         display: block;
         user-select: none;
       }
       .cb-fallback {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        color: hsl(var(--foreground) / 0.4);
+        color: hsl(var(--foreground) / 0.5);
         text-align: center;
-        max-width: 160px;
+        max-width: 140px;
         line-height: 1.4;
       }
       @media (max-width: 768px) {
-        .cb-logo { height: 110px; max-width: 190px; }
-        .cb-track { gap: 64px; }
-        .cb-fade  { width: 80px; }
+        .cb-logo { height: 64px; max-width: 130px; }
+        .cb-track { gap: 48px; }
+        .cb-fade  { width: 60px; }
       }
       @media (max-width: 480px) {
-        .cb-logo { height: 80px; max-width: 140px; }
-        .cb-track { gap: 44px; animation-duration: 22s; }
-        .cb-fade  { width: 50px; }
+        .cb-logo { height: 52px; max-width: 110px; }
+        .cb-track { gap: 36px; animation-duration: 24s; }
+        .cb-fade  { width: 40px; }
       }
     `}</style>
   </section>

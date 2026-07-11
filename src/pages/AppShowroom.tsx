@@ -31,9 +31,9 @@ const AppShowroom = () => {
         <div className="max-w-7xl mx-auto">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group"
           >
-            <ArrowLeft size={16} /> Back to Home
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Home
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -134,7 +134,7 @@ const AppShowroom = () => {
           </p>
           <Link
             to="/#support"
-            className="px-8 py-3 rounded-md bg-secondary text-secondary-foreground font-semibold hover:bg-secondary/80 transition-colors"
+            className="btn-primary"
           >
             Get in Touch
           </Link>

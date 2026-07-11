@@ -35,11 +35,11 @@ const stories = [
 const SocialImpact = () => (
   <section id="impact" className="section-padding">
     <div className="max-w-7xl mx-auto">
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-        <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">Social Impact</span>
-        <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Beyond the bottom line</h2>
-        <p className="text-muted-foreground max-w-xl text-lg">We believe technology should lift communities. Here's how we're giving back.</p>
-      </motion.div>
+      <div className="section-header">
+        <span className="section-eyebrow">Social Impact</span>
+        <h2 className="section-title">Beyond the bottom line</h2>
+        <p className="section-desc">We believe technology should lift communities. Here's how we're giving back.</p>
+      </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stories.map((story, i) => (
@@ -49,7 +49,7 @@ const SocialImpact = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="rounded-lg p-6 glass hover:glow-border transition-all duration-300"
+            className="card"
           >
             <story.icon size={28} className="text-primary mb-4" />
             <div className="text-3xl font-display font-bold text-gradient mb-0.5">{story.stat}</div>

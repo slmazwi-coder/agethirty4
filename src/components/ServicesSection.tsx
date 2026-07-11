@@ -5,39 +5,44 @@ const services = [
   {
     title: "Engineering Solutions",
     description: "Digital tools designed with structural precision for the construction and engineering sectors.",
-    icon: <PencilRuler className="w-8 h-8 text-primary" />,
+    icon: <PencilRuler className="w-6 h-6" />,
   },
   {
     title: "E-commerce Systems",
     description: "High-conversion digital storefronts built to scale your retail operations globally.",
-    icon: <Globe className="w-8 h-8 text-primary" />,
+    icon: <Globe className="w-6 h-6" />,
   },
   {
     title: "Strategic Marketing",
     description: "Data-driven brand growth and digital narratives that connect with the Sub-Saharan market.",
-    icon: <Megaphone className="w-8 h-8 text-primary" />,
+    icon: <Megaphone className="w-6 h-6" />,
   },
   {
     title: "Web Development",
     description: "Fast, responsive, and secure web architectures built for modern performance.",
-    icon: <Code className="w-8 h-8 text-primary" />,
+    icon: <Code className="w-6 h-6" />,
   },
   {
     title: "Custom App Development",
     description: "Bespoke mobile and web applications built to run your internal business operations or complex commerce engines. Engineered for efficiency, not just aesthetics.",
-    icon: <Layers className="w-8 h-8 text-primary" />,
+    icon: <Layers className="w-6 h-6" />,
   },
 ];
 
 const Services = () => (
-  <section id="services" className="py-24 bg-secondary/10">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="mb-16">
-        <span className="text-primary font-bold tracking-widest text-xs uppercase">Our Expertise</span>
-        <h2 className="text-4xl font-display font-bold mt-4">Solutions for the Forward-Thinking</h2>
+  <section id="services" className="section-padding bg-gradient-to-b from-secondary/20 via-background to-background">
+    <div className="max-w-7xl mx-auto">
+      <div className="section-header">
+        <span className="section-eyebrow">Our Expertise</span>
+        <h2 className="section-title">
+          Solutions for the <span className="text-gradient">Forward-Thinking</span>
+        </h2>
+        <p className="section-desc">
+          We combine engineering discipline with modern design to deliver systems that are fast, reliable, and ready to scale.
+        </p>
       </div>
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, i) => (
           <motion.div
             key={service.title}
@@ -45,10 +50,12 @@ const Services = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="p-8 rounded-3xl glass border border-foreground/5 hover:glow-border transition-all"
+            className="card group"
           >
-            <div className="mb-6">{service.icon}</div>
-            <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+              {service.icon}
+            </div>
+            <h3 className="text-xl font-bold mb-3">{service.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {service.description}
             </p>

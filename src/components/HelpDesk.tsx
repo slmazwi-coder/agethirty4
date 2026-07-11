@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, MessageCircle, Mail, Phone, Clock } from "lucide-react";
+import { MessageCircle, Mail, Phone, Clock, ArrowRight } from "lucide-react";
 
 const HelpDesk = () => {
   const [form, setForm] = useState({ name: "", email: "", app: "", message: "" });
@@ -14,57 +14,55 @@ const HelpDesk = () => {
   };
 
   const contactMethods = [
-    { 
-      icon: MessageCircle, 
-      title: "WhatsApp Support", 
-      info: "+27 61 612 2586", 
+    {
+      icon: MessageCircle,
+      title: "WhatsApp Support",
+      info: "+27 61 612 2586",
       sub: "Average response: 15 mins",
       link: "https://wa.me/27616122586?text=Hi%20Age%20Thirty%204%20Team"
     },
-    { 
-      icon: Mail, 
-      title: "Email Support", 
-      info: "info@agethirty4.co.za", 
+    {
+      icon: Mail,
+      title: "Email Support",
+      info: "info@agethirty4.co.za",
       sub: "Official Case Tracking",
       link: "mailto:info@agethirty4.co.za"
     },
-    { 
-      icon: Phone, 
-      title: "Direct Line", 
-      info: "+27 61 612 2586", 
+    {
+      icon: Phone,
+      title: "Direct Line",
+      info: "+27 61 612 2586",
       sub: "Mon–Fri, 8AM – 6PM SAST",
-      link: "tel:+27616122586" 
+      link: "tel:+27616122586"
     },
   ];
 
   return (
-    <section id="support" className="py-24 px-6 bg-background">
+    <section id="support" className="section-padding bg-background">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
-          className="mb-16 text-left"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="section-header"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3 block">
-            Customer Success
-          </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 tracking-tight">
+          <span className="section-eyebrow">Customer Success</span>
+          <h2 className="section-title">
             We're here to help
           </h2>
-          <p className="text-muted-foreground max-w-xl text-lg leading-relaxed">
-            Stuck on a project or need technical guidance? Reach out to our 
-            engineering team. We typically respond within the hour.
+          <p className="section-desc">
+            Stuck on a project or need technical guidance? Reach out to our engineering team.
+            We typically respond within the hour.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div className="grid lg:grid-cols-5 gap-8">
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-3 rounded-2xl p-8 glass glow-border space-y-6"
+            className="lg:col-span-3 rounded-2xl p-8 glass-strong glow-border space-y-6"
           >
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -74,7 +72,7 @@ const HelpDesk = () => {
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl bg-surface border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"
                   placeholder="e.g. John Doe"
                 />
               </div>
@@ -85,18 +83,18 @@ const HelpDesk = () => {
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl bg-surface border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"
                   placeholder="info@agethirty4.co.za"
                 />
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-sm font-medium text-muted-foreground ml-1">Service Area</label>
               <select
                 value={form.app}
                 onChange={(e) => setForm({ ...form, app: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+                className="w-full px-4 py-3.5 rounded-xl bg-surface border border-border/50 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"
               >
                 <option value="">General Inquiry</option>
                 <option>Thirty4 PDF (Intelligence)</option>
@@ -113,7 +111,7 @@ const HelpDesk = () => {
                 rows={4}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all resize-none"
+                className="w-full px-4 py-3.5 rounded-xl bg-surface border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all resize-none"
                 placeholder="How can we assist you today?"
               />
             </div>
@@ -121,13 +119,20 @@ const HelpDesk = () => {
             <button
               type="submit"
               disabled={submitted}
-              className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold transition-all duration-300 ${
-                submitted 
-                ? "bg-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.4)]" 
-                : "bg-primary text-primary-foreground hover:shadow-[var(--shadow-glow)] hover:-translate-y-1"
+              className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all ${
+                submitted
+                  ? "bg-green-500 text-white"
+                  : "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-glow hover:-translate-y-0.5"
               }`}
             >
-              {submitted ? "Success! We'll be in touch ✓" : "Submit Request"}
+              {submitted ? (
+                "Success! We'll be in touch"
+              ) : (
+                <>
+                  Submit Request
+                  <ArrowRight size={18} />
+                </>
+              )}
             </button>
           </motion.form>
 
@@ -138,12 +143,12 @@ const HelpDesk = () => {
             className="lg:col-span-2 space-y-4"
           >
             {contactMethods.map(({ icon: Icon, title, info, sub, link }) => (
-              <a 
-                key={title} 
+              <a
+                key={title}
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block group p-6 rounded-2xl glass hover:glow-border transition-all duration-500 border border-transparent hover:bg-secondary/20"
+                className="block group p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:bg-secondary/20 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">

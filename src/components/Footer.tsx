@@ -1,20 +1,19 @@
 import ClientBelt from "./ClientBelt";
 
 const Footer = () => (
-  <footer className="border-t border-border">
-    {/* ── Scrolling client logo belt ── */}
+  <footer className="border-t border-border/30 bg-card/30">
+    {/* Scrolling client logo belt */}
     <ClientBelt />
 
-    {/* ── Footer content ── */}
+    {/* Footer content */}
     <div className="py-12 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-
         {/* Logo + tagline */}
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <img
-            src="/Logo.png?v=2"
+            src="/Logo.png?v=3"
             alt="AGE THIRTY4"
-            className="h-20 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
           <p className="text-sm text-muted-foreground text-center sm:text-left max-w-xs">
             Building software that moves industries forward.
@@ -29,7 +28,7 @@ const Footer = () => (
               onClick={() => {
                 const el = document.getElementById(item.toLowerCase());
                 if (el) {
-                  const top = el.getBoundingClientRect().top + window.scrollY - 72;
+                  const top = el.getBoundingClientRect().top + window.scrollY - 88;
                   window.scrollTo({ top, behavior: "smooth" });
                 }
               }}
