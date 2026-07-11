@@ -37,7 +37,7 @@ const UluthandoAgent = () => {
 
   const send = useCallback(async (text: string) => {
     if (!text.trim() || loading) return;
-    
+
     const userMsg: Msg = { role: "user", content: text.trim() };
     setMessages((p) => [...p, userMsg]);
     setInput("");
@@ -58,7 +58,7 @@ const UluthandoAgent = () => {
       const reader = resp.body.getReader();
       const decoder = new TextDecoder();
       let soFar = "";
-      let residual = ""; // FIXES THE STUTTERING/BROKEN WORDS
+      let residual = "";
 
       while (true) {
         const { done, value } = await reader.read();
@@ -66,7 +66,7 @@ const UluthandoAgent = () => {
 
         const chunk = decoder.decode(value, { stream: true });
         const lines = (residual + chunk).split("\n");
-        residual = lines.pop() || ""; 
+        residual = lines.pop() || "";
 
         for (const line of lines) {
           if (!line.startsWith("data: ")) continue;
@@ -98,17 +98,17 @@ const UluthandoAgent = () => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)} className="fixed bottom-6 right-6 p-4 bg-primary rounded-full text-primary-foreground shadow-xl z-50 hover:scale-110 transition-transform">
+      <button onClick={() => setOpen(true)} className="fixed bottom-6 right-6 p-4 bg-primary rounded-full text-primary-foreground shadow-glow z-50 hover:scale-110 transition-transform">
         <MessageCircle size={24} />
       </button>
 
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed bottom-6 right-6 z-50 w-[400px] max-w-[90vw] h-[600px] flex flex-col rounded-3xl glass shadow-2xl overflow-hidden border border-foreground/10">
-            
+            className="fixed bottom-6 right-6 z-50 w-[400px] max-w-[90vw] h-[600px] flex flex-col rounded-2xl glass-strong shadow-2xl overflow-hidden border border-primary/20">
+
             {/* Header */}
-            <div className="p-5 bg-card/90 border-b border-foreground/5 flex justify-between items-center">
+            <div className="p-5 bg-card/90 border-b border-border/30 flex justify-between items-center">
               <div>
                 <h3 className="font-bold text-lg">Uluthando</h3>
                 <div className="flex items-center gap-2">
@@ -119,7 +119,7 @@ const UluthandoAgent = () => {
               <div className="flex items-center gap-1.5 bg-primary/10 px-2 py-1 rounded-full border border-primary/20">
                 <span className="text-[8px] font-bold text-primary tracking-tighter uppercase">Vulavula Inside</span>
               </div>
-              <button onClick={() => setOpen(false)} className="hover:bg-foreground/10 p-1 rounded"><X size={18} /></button>
+              <button onClick={() => setOpen(false)} className="hover:bg-foreground/10 p-1 rounded-full transition-colors"><X size={18} /></button>
             </div>
 
             {/* Chat Body */}
@@ -132,7 +132,7 @@ const UluthandoAgent = () => {
               )}
               {messages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${m.role === "user" ? "bg-primary shadow-lg" : "bg-foreground/5 border border-foreground/10"}`}>
+                  <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${m.role === "user" ? "bg-primary shadow-glow-sm" : "bg-card border border-border/50"}`}>
                     <ReactMarkdown className="prose prose-invert prose-sm">{m.content}</ReactMarkdown>
                   </div>
                 </div>
@@ -140,9 +140,9 @@ const UluthandoAgent = () => {
             </div>
 
             {/* Input Form */}
-            <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="p-4 bg-card/90 flex gap-2 border-t border-foreground/5">
-              <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Message Uluthando..." className="flex-1 bg-foreground/5 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary border border-foreground/10" />
-              <button type="submit" disabled={!input.trim() || loading} className="p-3 bg-primary rounded-xl text-primary-foreground disabled:opacity-50"><Send size={18}/></button>
+            <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="p-4 bg-card/90 flex gap-2 border-t border-border/30">
+              <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Message Uluthando..." className="flex-1 bg-surface rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary border border-border/50" />
+              <button type="submit" disabled={!input.trim() || loading} className="p-3 bg-primary rounded-xl text-primary-foreground disabled:opacity-50 hover:shadow-glow-sm transition-all"><Send size={18}/></button>
             </form>
 
             {/* Footer Badge */}

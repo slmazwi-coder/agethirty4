@@ -6,10 +6,10 @@
 
 @layer base {
   :root {
-    --background: 0 0% 9%;
+    --background: 0 0% 6%;
     --foreground: 0 0% 92%;
 
-    --card: 0 0% 11%;
+    --card: 0 0% 10%;
     --card-foreground: 0 0% 92%;
 
     --popover: 0 0% 11%;
@@ -18,10 +18,10 @@
     --primary: 45 92% 50%;
     --primary-foreground: 0 0% 8%;
 
-    --secondary: 0 0% 14%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 85%;
 
-    --muted: 0 0% 16%;
+    --muted: 0 0% 14%;
     --muted-foreground: 0 0% 55%;
 
     --accent: 45 80% 45%;
@@ -30,11 +30,11 @@
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 92%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
     --ring: 45 92% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 85%;
@@ -46,14 +46,16 @@
     --sidebar-ring: 45 92% 50%;
 
     /* Custom tokens */
-    --surface: 0 0% 12%;
+    --surface: 0 0% 11%;
     --surface-foreground: 0 0% 88%;
     --gold-glow: 45 100% 65%;
-    --gradient-hero: linear-gradient(135deg, hsl(45 92% 50% / 0.15), hsl(0 0% 9% / 0));
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 14%), hsl(0 0% 10%));
-    --shadow-glow: 0 0 40px hsl(45 92% 50% / 0.15);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.3);
-    --revamp-cache-bust: 2;
+    --gold-deep: 45 90% 45%;
+    --gradient-hero: radial-gradient(60% 60% at 50% 0%, hsl(45 92% 50% / 0.12), hsl(0 0% 6% / 0));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 14%) 0%, hsl(0 0% 9%) 100%);
+    --shadow-glow: 0 0 40px hsl(45 92% 50% / 0.12);
+    --shadow-glow-sm: 0 0 20px hsl(45 92% 50% / 0.1);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.35);
+    --revamp-cache-bust: 3;
   }
 }
 
@@ -67,31 +69,96 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display tracking-tight;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-gold-glow;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-gold-glow to-gold-glow;
+  }
+
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-foreground to-muted-foreground;
   }
 
   .glass {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+    @apply bg-card/70 backdrop-blur-2xl border border-border/40;
+  }
+
+  .glass-strong {
+    @apply bg-card/90 backdrop-blur-3xl border border-border/60;
   }
 
   .glow-border {
-    @apply border border-primary/20 shadow-[0_0_20px_hsl(45_92%_50%_/_0.1)];
+    @apply border border-primary/20 shadow-glow-sm;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 40px hsl(45 92% 50% / 0.12), 0 0 80px hsl(45 92% 50% / 0.06);
   }
 
   .section-padding {
-    @apply py-20 md:py-28 px-4 md:px-8;
+    @apply py-24 md:py-32 px-6;
+  }
+
+  .section-header {
+    @apply text-center max-w-3xl mx-auto mb-16 md:mb-20;
+  }
+
+  .section-eyebrow {
+    @apply inline-block text-xs font-bold tracking-[0.25em] uppercase text-primary mb-4;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-5;
+  }
+
+  .section-desc {
+    @apply text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .card {
+    @apply rounded-2xl bg-card border border-border/50 p-6 transition-all duration-300 hover:border-primary/30 hover:-translate-y-1 hover:shadow-card;
+  }
+
+  .card-gradient {
+    background: linear-gradient(180deg, hsl(0 0% 14%) 0%, hsl(0 0% 9%) 100%);
   }
 
   .grid-pattern {
     background-image:
-      linear-gradient(hsl(0 0% 18% / 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(0 0% 18% / 0.5) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(hsl(0 0% 18% / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 18% / 0.4) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm transition-all hover:bg-primary/90 hover:shadow-glow hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full glass text-foreground font-semibold text-sm transition-all hover:bg-secondary hover:border-primary/30;
+  }
+
+  .nav-link {
+    @apply relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
   }
 }

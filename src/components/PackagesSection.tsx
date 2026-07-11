@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Check } from "lucide-react";
 
 type Package = {
   id: string;
@@ -147,43 +148,41 @@ const PackagesSection = () => {
   const filtered = packages.filter((p) => p.category === activeTab);
 
   return (
-    <section id="packages" className="py-24 px-6 relative overflow-hidden">
+    <section id="packages" className="section-padding relative overflow-hidden">
       {/* Background texture */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-xs font-semibold tracking-[0.25em] uppercase text-primary/70 mb-4">
-            Website Development & Hosting
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight mb-4">
+        <div className="section-header">
+          <span className="section-eyebrow">Website Development & Hosting</span>
+          <h2 className="section-title">
             Packages Built for{" "}
             <span className="text-gradient">South African Businesses</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+          <p className="section-desc">
             Professional website development and hosting for businesses across Durban, Mthatha, East London,
             Pietermaritzburg, Newcastle, Richards Bay, Kokstad, Matatiele, Umzimkulu, Butterworth and Queenstown.
           </p>
-
         </div>
 
         {/* Sub-tabs */}
-        <div className="flex justify-center gap-3 mb-12">
-          {(["school", "commercial"] as const).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
-                activeTab === tab
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "border border-border text-muted-foreground hover:text-foreground hover:border-primary/40"
-              }`}
-            >
-              {tab === "school" ? "🎓 School Packages" : "🏢 Commercial Packages"}
-            </button>
-          ))}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex p-1 rounded-full bg-card border border-border/50">
+            {(["school", "commercial"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  activeTab === tab
+                    ? "bg-primary text-primary-foreground shadow-glow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {tab === "school" ? "School Packages" : "Commercial Packages"}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Package cards */}
@@ -193,13 +192,15 @@ const PackagesSection = () => {
           {filtered.map((pkg) => (
             <div
               key={pkg.id}
-              className={`relative rounded-2xl border ${
-                pkg.popular ? "border-primary/60" : "border-border"
-              } bg-gradient-to-b ${pkg.color} backdrop-blur-sm p-6 flex flex-col gap-4 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1`}
+              className={`relative rounded-2xl border p-6 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 ${
+                pkg.popular
+                  ? "border-primary/60 bg-gradient-to-b from-primary/10 to-card shadow-glow"
+                  : "border-border/50 bg-card hover:border-primary/40 hover:shadow-card"
+              }`}
             >
               {/* Popular badge */}
               {pkg.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wide">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-gold-glow text-primary-foreground text-xs font-bold tracking-wide shadow-glow-sm">
                   Most Popular
                 </div>
               )}
@@ -207,19 +208,19 @@ const PackagesSection = () => {
               {/* Badge + name */}
               <div>
                 <span
-                  className="text-xs font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full"
+                  className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full"
                   style={{ background: `${pkg.accent}22`, color: pkg.accent }}
                 >
                   {pkg.badge}
                 </span>
-                <h3 className="text-xl font-display font-bold mt-3 tracking-tight">{pkg.name}</h3>
+                <h3 className="text-2xl font-display font-bold mt-3 tracking-tight">{pkg.name}</h3>
                 <p className="text-xs text-muted-foreground mt-0.5">{pkg.tagline}</p>
               </div>
 
               {/* Price */}
               <div className="border-t border-border/50 pt-4">
                 <div className="flex items-end gap-2">
-                  <span className="text-3xl font-bold font-display" style={{ color: pkg.accent }}>
+                  <span className="text-4xl font-bold font-display" style={{ color: pkg.accent }}>
                     {pkg.price}
                   </span>
                   <span className="text-sm text-muted-foreground mb-1">launch</span>
@@ -233,8 +234,10 @@ const PackagesSection = () => {
               {/* Features */}
               <ul className="flex flex-col gap-2 flex-1">
                 {pkg.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm">
-                    <span style={{ color: pkg.accent }} className="mt-0.5 shrink-0">✓</span>
+                  <li key={i} className="flex items-start gap-2.5 text-sm">
+                    <span style={{ color: pkg.accent }} className="mt-0.5 shrink-0">
+                      <Check size={14} />
+                    </span>
                     <span className="text-foreground/80">{f}</span>
                   </li>
                 ))}
@@ -251,7 +254,7 @@ const PackagesSection = () => {
                 href={`https://wa.me/27616122586?text=Hi AGE THIRTY4, I'm interested in the ${pkg.name} package`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 w-full py-3 rounded-xl text-sm font-semibold text-center transition-all duration-200 hover:opacity-90 hover:shadow-lg"
+                className="mt-2 w-full py-3.5 rounded-full text-sm font-semibold text-center transition-all duration-200 hover:opacity-90 hover:shadow-glow"
                 style={{ background: pkg.accent, color: "#000" }}
               >
                 Get Started on WhatsApp

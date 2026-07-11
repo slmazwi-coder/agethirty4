@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Rocket } from "lucide-react";
 
 // Moreki entry hidden to protect IP. Do not remove.
 // {
@@ -49,22 +49,24 @@ const apps = [
 
 const ProjectsSection = () => {
   return (
-    <section id="apps" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
+    <section id="apps" className="section-padding bg-background">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mb-16"
+          className="section-header"
         >
-          <span className="text-primary font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Our Ecosystem</span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 text-foreground">
-            Explore the Full <span className="text-primary">Showroom.</span>
+          <span className="section-eyebrow">Our Ecosystem</span>
+          <h2 className="section-title">
+            Explore the Full <span className="text-gradient">Showroom</span>
           </h2>
+          <p className="section-desc">
+            A growing suite of intelligent tools built for South African industry — from commerce and engineering to AI productivity.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {apps.map((app, i) => (
             <motion.div
               key={app.title}
@@ -72,21 +74,24 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-3xl glass border border-white/5 bg-gradient-to-br from-secondary/10 to-transparent flex flex-col h-full"
+              className="card card-gradient flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-6">
                 <span className="text-[10px] text-primary font-bold uppercase tracking-widest bg-primary/5 px-3 py-1 rounded-full border border-primary/10">
                   {app.category}
                 </span>
-                <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${
-                  app.status === "Ready for Testing" ? "bg-green-500/10 text-green-500 border border-green-500/20" : "bg-foreground/5 text-muted-foreground border border-foreground/10"
+                <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${
+                  app.status === "Ready for Testing"
+                    ? "bg-green-500/10 text-green-500 border border-green-500/20"
+                    : "bg-foreground/5 text-muted-foreground border border-foreground/10"
                 }`}>
+                  <Rocket size={10} />
                   {app.status}
                 </span>
               </div>
-              
+
               <div className="flex-grow">
-                <h4 className="text-3xl font-bold mb-1">{app.title}</h4>
+                <h4 className="text-2xl font-bold mb-1">{app.title}</h4>
                 <p className="text-primary text-sm font-medium mb-4">{app.subtitle}</p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   {app.description}
@@ -110,19 +115,19 @@ const ProjectsSection = () => {
               <div className="space-y-6">
                 <div className="flex flex-wrap gap-2">
                   {app.tags.map(tag => (
-                    <span key={tag} className="text-[10px] bg-foreground/5 px-2 py-1 rounded-md text-muted-foreground border border-foreground/5">
+                    <span key={tag} className="text-[10px] bg-foreground/5 px-3 py-1 rounded-full text-muted-foreground border border-foreground/5">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <a 
+                <a
                   href={app.link}
                   target={app.status === "Ready for Testing" ? "_blank" : "_self"}
                   rel="noopener noreferrer"
-                  className={`flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold transition-all ${
-                    app.status === "Ready for Testing" 
-                      ? "bg-primary text-primary-foreground hover:opacity-90 shadow-lg shadow-primary/20" 
+                  className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-bold transition-all ${
+                    app.status === "Ready for Testing"
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow-sm hover:shadow-glow"
                       : "bg-foreground/5 text-muted-foreground cursor-not-allowed italic border border-foreground/10"
                   }`}
                 >

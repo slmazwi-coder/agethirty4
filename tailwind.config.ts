@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+import typography from "@tailwindcss/typography";
 
 export default {
   darkMode: ["class"],
@@ -57,6 +58,7 @@ export default {
           foreground: "hsl(var(--surface-foreground))",
         },
         "gold-glow": "hsl(var(--gold-glow))",
+        "gold-deep": "hsl(var(--gold-deep))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -72,6 +74,15 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        glow: "0 0 40px hsl(45 92% 50% / 0.12)",
+        "glow-sm": "0 0 20px hsl(45 92% 50% / 0.1)",
+        card: "0 8px 32px hsl(0 0% 0% / 0.35)",
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-card": "var(--gradient-card)",
       },
       keyframes: {
         "accordion-down": {
@@ -99,5 +110,5 @@ export default {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate, typography],
 } satisfies Config;

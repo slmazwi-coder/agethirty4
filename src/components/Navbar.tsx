@@ -23,7 +23,7 @@ const Navbar = () => {
     setTimeout(() => {
       const el = document.getElementById(sectionId);
       if (el) {
-        const navHeight = 72;
+        const navHeight = 88;
         const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
         window.scrollTo({ top, behavior: "smooth" });
       }
@@ -31,18 +31,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
-
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-strong border-b border-border/30">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 h-20 md:h-24">
         {/* Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center"
         >
           <img
-            src="/Logo.png?v=2"
+            src="/Logo.png?v=3"
             alt="AGE THIRTY4"
-            className="h-16 md:h-20 w-auto object-contain"
+            className="h-14 md:h-16 w-auto object-contain"
           />
         </button>
 
@@ -52,14 +51,14 @@ const Navbar = () => {
             <button
               key={item}
               onClick={() => scrollTo(item)}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="nav-link"
             >
               {item}
             </button>
           ))}
           <button
             onClick={() => scrollTo("support")}
-            className="px-5 py-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+            className="ml-4 px-6 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all hover:shadow-glow"
           >
             Get Help
           </button>
@@ -68,10 +67,10 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-foreground p-1"
+          className="md:hidden text-foreground p-2 rounded-full hover:bg-foreground/5 transition-colors"
           aria-label="Toggle menu"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -83,7 +82,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden glass border-t border-border overflow-hidden"
+            className="md:hidden glass-strong border-t border-border/30 overflow-hidden"
           >
             <div className="flex flex-col p-6 gap-1">
               {navItems.map((item) => (
@@ -97,7 +96,7 @@ const Navbar = () => {
               ))}
               <button
                 onClick={() => scrollTo("support")}
-                className="mt-4 w-full py-3 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+                className="mt-4 w-full py-3 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
               >
                 Get Help
               </button>
